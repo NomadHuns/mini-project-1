@@ -22,14 +22,14 @@
         </div>
         <div class="justify-content-center d-flex">
             <div class="my-border-color-default px-3 py-3" style="width: 50%; ">
-                <form>
+                <form action="/user/join" method="post">
                     <div class="mb-3">
                         <label class="form-label">아이디</label>
-                        <input type="text" class="form-control" placeholder="Username">
+                        <input name="username" type="text" class="form-control" placeholder="Username">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">비밀번호</label>
-                        <input type="password" class="form-control" placeholder="Password">
+                        <input name="password" type="password" class="form-control" placeholder="Password">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">비밀번호 확인</label>
@@ -37,7 +37,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">이메일</label>
-                        <input type="email" class="form-control" placeholder="Email">
+                        <input name="email" type="email" class="form-control" placeholder="Email">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">이용 약관</label>

@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import shop.mtcoding.jobara.dto.user.UserReq.UserJoinReqDto;
 import shop.mtcoding.jobara.dto.user.UserReq.UserLoginReqDto;
-import shop.mtcoding.jobara.ex.CustomException;
 import shop.mtcoding.jobara.model.User;
 import shop.mtcoding.jobara.service.UserService;
 import shop.mtcoding.jobara.util.Verify;
@@ -31,6 +31,15 @@ public class UserController {
       @GetMapping("/user/joinForm")
       public String joinForm() {
             return "user/joinForm";
+      }
+
+      @PostMapping("/user/join")
+      public String login(UserJoinReqDto userJoinReqDto) {
+            Verify.validateStiring(userJoinReqDto.getUsername(), "유저네임을 입력하세요.");
+            Verify.validateStiring(userJoinReqDto.getPassword(), "암호를 입력하세요.");
+            Verify.validateStiring(userJoinReqDto.getEmail(), "암호를 입력하세요.");
+            userService.join(userJoinReqDto);
+            return "redirect:/";
       }
 
       @GetMapping("/user/list")
