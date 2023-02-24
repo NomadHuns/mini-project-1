@@ -29,7 +29,7 @@ public class UserService {
             int result = userRepository.insert(new User(userJoinReqDto.getUsername(),
                         userJoinReqDto.getPassword(),
                         userJoinReqDto.getEmail()));
-            Verify.validateObject(result, "유저네임이나 암호를 확인해주세요.");
+            Verify.validateObject(result, "서버에 일시적인 문제가 생겼습니다");
             return result;
       }
 }

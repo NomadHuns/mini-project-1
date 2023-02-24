@@ -37,7 +37,7 @@ public class UserController {
       public String login(UserJoinReqDto userJoinReqDto) {
             Verify.validateStiring(userJoinReqDto.getUsername(), "유저네임을 입력하세요.");
             Verify.validateStiring(userJoinReqDto.getPassword(), "암호를 입력하세요.");
-            Verify.validateStiring(userJoinReqDto.getEmail(), "암호를 입력하세요.");
+            Verify.validateStiring(userJoinReqDto.getEmail(), "이메일을 입력하세요.");
             userService.join(userJoinReqDto);
             return "redirect:/";
       }
