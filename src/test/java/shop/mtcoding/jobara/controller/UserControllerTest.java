@@ -37,4 +37,16 @@ public class UserControllerTest {
             assertThat(usPrincipal.getUsername()).isEqualTo("ssar");
             resultActions.andExpect(status().is3xxRedirection());
       }
+
+      @Test
+      public void join_test() throws Exception {
+            // given
+            String requestBody = "username=love&password=1234&email=love@nate.com";
+            // when
+            ResultActions resultActions = mvc.perform(post("/user/join").content(requestBody)
+                        .contentType(MediaType.APPLICATION_FORM_URLENCODED_VALUE));
+
+            // then
+            resultActions.andExpect(status().is3xxRedirection());
+      }
 }
