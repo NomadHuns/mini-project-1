@@ -24,7 +24,7 @@ insert into tech_tb(user_id, java, c_lang, python, php, jsc, ruby, assembly_lang
 
 insert into tech_tb(board_id, java, c_lang, python, php, jsc, ruby, assembly_lang, sql_lang, created_at) values(1, 'on', 'on', null, 'on', null, 'on', null, null, now());
 insert into tech_tb(board_id, java, c_lang, python, php, jsc, ruby, assembly_lang, sql_lang, created_at) values(2, 'on', null, null, 'on', 'on', null, 'on', 'on', now());
-insert into tech_tb(board_id, java, c_lang, python, php, jsc, ruby, assembly_lang, sql_lang, created_at) values(2, null, null, 'on', null, 'on', 'on', 'on', null, now());
-insert into tech_tb(board_id, java, c_lang, python, php, jsc, ruby, assembly_lang, sql_lang, created_at) values(2, null, 'on', 'on', null, null, 'on', null, 'on', now());
+insert into tech_tb(board_id, java, c_lang, python, php, jsc, ruby, assembly_lang, sql_lang, created_at) values(3, null, null, 'on', null, 'on', 'on', 'on', null, now());
+insert into tech_tb(board_id, java, c_lang, python, php, jsc, ruby, assembly_lang, sql_lang, created_at) values(4, null, 'on', 'on', null, null, 'on', null, 'on', now());
 
 commit; 

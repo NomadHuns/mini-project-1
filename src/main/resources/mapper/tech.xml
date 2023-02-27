@@ -11,6 +11,10 @@
       <select id="findById" resultType="shop.mtcoding.jobara.tech.model.Tech">
         select * from tech_tb where id = #{id}
       </select>    
+
+      <select id="findByboardId" resultType="shop.mtcoding.jobara.tech.model.Tech">
+        select * from tech_tb where board_id = #{boardId}
+      </select>    
       
       <insert id="insert">
             insert into tech_tb(board_id, user_id, java, c_lang, python, php, jsc, ruby, assembly_lang, sql_lang, created_at)

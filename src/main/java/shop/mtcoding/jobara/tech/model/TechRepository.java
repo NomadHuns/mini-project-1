@@ -11,6 +11,8 @@ public interface TechRepository {
 
       public Tech findById(int id);
 
+      public Tech findByboardId(int boardId);
+
       public int insert(Tech tech);
 
       public int updateById(Tech tech);

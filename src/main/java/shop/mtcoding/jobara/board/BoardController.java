@@ -22,6 +22,8 @@ import shop.mtcoding.jobara.board.dto.BoardResp.MyBoardListRespDto;
 import shop.mtcoding.jobara.common.ex.CustomException;
 import shop.mtcoding.jobara.common.util.Verify;
 import shop.mtcoding.jobara.company.model.Company;
+import shop.mtcoding.jobara.tech.dto.TechReq.BoardTechReqDto;
+import shop.mtcoding.jobara.tech.model.Tech;
 
 @Controller
 public class BoardController {
@@ -72,15 +74,16 @@ public class BoardController {
             Verify.validateObject(coPrincipal, "로그인이 필요한 페이지입니다", HttpStatus.BAD_REQUEST, "/company/loginForm");
 
             BoardUpdateRespDto boardDetailPS = boardService.getDetailForUpdate(id, coPrincipal.getId());
+            Tech techDetailPS = boardService.getTechDetailForUpdate(id);
             model.addAttribute("boardDetail", boardDetailPS);
+            model.addAttribute("techDetail", techDetailPS);
 
             return "board/updateForm";
       }
 
       @PostMapping("/board/update/{id}")
-      public String update(@PathVariable int id, BoardUpdateReqDto boardUpdateReqDto) {
+      public String update(@PathVariable int id, BoardUpdateReqDto boardUpdateReqDto, BoardTechReqDto boardTechReqDto) {
             Company coPrincipal = (Company) session.getAttribute("coPrincipal");
-
             // 인증
             Verify.validateObject(coPrincipal, "로그인이 필요한 페이지입니다", HttpStatus.BAD_REQUEST, "/company/loginForm");
 
@@ -90,6 +93,8 @@ public class BoardController {
             Verify.validateStiring(boardUpdateReqDto.getCareerString(), "경력을 입력하세요");
 
             boardService.updateBoard(boardUpdateReqDto, coPrincipal.getId());
+
+            boardService.updateTech(boardTechReqDto, id);
 
             return "redirect:/board/" + id;
       }

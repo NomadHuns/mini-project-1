@@ -18,12 +18,18 @@ import shop.mtcoding.jobara.board.model.Board;
 import shop.mtcoding.jobara.board.model.BoardRepository;
 import shop.mtcoding.jobara.common.ex.CustomException;
 import shop.mtcoding.jobara.common.util.CareerParse;
+import shop.mtcoding.jobara.tech.dto.TechReq.BoardTechReqDto;
+import shop.mtcoding.jobara.tech.model.Tech;
+import shop.mtcoding.jobara.tech.model.TechRepository;
 
 @Service
 public class BoardService {
 
     @Autowired
     private BoardRepository boardRepository;
+
+    @Autowired
+    private TechRepository techRepository;
 
     @Transactional(readOnly = true)
     public List<MyBoardListRespDto> getMyBoard(int coPrincipalId, int companyId) {
@@ -120,6 +126,14 @@ public class BoardService {
     }
 
     @Transactional(readOnly = true)
+    public Tech getTechDetailForUpdate(int id) {
+
+        Tech techDetailPS = techRepository.findByboardId(id);
+
+        return techDetailPS;
+    }
+
+    @Transactional(readOnly = true)
     public BoardDetailRespDto getDetail(int id) {
         BoardDetailRespDto boardDetailPS;
 
@@ -149,6 +163,18 @@ public class BoardService {
     }
 
     public void getMyBoard(Integer id) {
+    }
+
+    public void updateTech(BoardTechReqDto boardTechReqDto, int boardId) {
+        Tech techPS = techRepository.findByboardId(boardId);
+
+        if (techPS == null) {
+            Tech tech = new Tech(boardId, boardTechReqDto);
+            techRepository.insert(tech);
+        } else {
+            techPS.updateBoard(boardTechReqDto);
+            techRepository.updateById(techPS);
+        }
     }
 
 }
