@@ -21,6 +21,7 @@ import shop.mtcoding.jobara.common.util.CareerParse;
 import shop.mtcoding.jobara.tech.dto.TechReq.BoardTechReqDto;
 import shop.mtcoding.jobara.tech.model.Tech;
 import shop.mtcoding.jobara.tech.model.TechRepository;
+import shop.mtcoding.jobara.user.model.User;
 
 @Service
 public class BoardService {
@@ -152,16 +153,29 @@ public class BoardService {
     }
 
     @Transactional(readOnly = true)
-    public List<BoardListRespDto> getList() {
+    public List<BoardListRespDto> getList(String keyword, int userId) {
         List<BoardListRespDto> boardListPS;
+        List<BoardListRespDto> boardPreferedListPS;
+        Tech tech = techRepository.findByuserId(userId);
 
-        try {
-            boardListPS = boardRepository.findAllWithCompany();
-        } catch (Exception e) {
-            throw new CustomException("서버에 일시적인 문제가 생겼습니다", HttpStatus.INTERNAL_SERVER_ERROR);
+        if (keyword == null || tech == null) {
+            try {
+                boardListPS = boardRepository.findAllWithCompany();
+                return boardListPS;
+            } catch (Exception e) {
+                throw new CustomException("서버에 일시적인 문제가 생겼습니다", HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+
+        } else {
+            try {
+                boardPreferedListPS = boardRepository.findAllForPreferedTech(tech);
+                return boardPreferedListPS;
+            } catch (Exception e) {
+                throw new CustomException("서버에 일시적인 문제가 생겼습니다", HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+
         }
 
-        return boardListPS;
     }
 
     public void getMyBoard(Integer id) {

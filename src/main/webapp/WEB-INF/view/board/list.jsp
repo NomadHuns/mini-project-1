@@ -7,10 +7,11 @@
                 <h2 style="text-align: center;">채용 공고 목록</h2>
             </div>
             <div class="d-flex justify-content-end mb-2">
-                <select class="form-select" style="width: 123px;">
-                    <option>관련도순</option>
-                    <option> 인기순</option>
-                    <option> 날짜순</option>
+                <select class="form-select" style="width: 123px;" onchange="if(this.value) location.href=(this.value);">
+                    <option value="#">정렬순서</option>
+                    <option value="/board/list?keyword=관련도순">관련도순</option>
+                    <option value="#"> 인기순</option>
+                    <option value="#"> 날짜순</option>
                 </select>
             </div>
             <!-- 카드 시작 -->

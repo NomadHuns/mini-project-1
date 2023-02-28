@@ -24,12 +24,17 @@ import shop.mtcoding.jobara.common.util.Verify;
 import shop.mtcoding.jobara.company.model.Company;
 import shop.mtcoding.jobara.tech.dto.TechReq.BoardTechReqDto;
 import shop.mtcoding.jobara.tech.model.Tech;
+import shop.mtcoding.jobara.tech.model.TechRepository;
+import shop.mtcoding.jobara.user.model.User;
 
 @Controller
 public class BoardController {
 
       @Autowired
       private BoardService boardService;
+
+      @Autowired
+      private TechRepository techRepository;
 
       @Autowired
       private HttpSession session;
@@ -50,9 +55,12 @@ public class BoardController {
       }
 
       @GetMapping("/board/list")
-      public String list(Model model) {
-            List<BoardListRespDto> boardListPS = boardService.getList();
+      public String list(Model model, String keyword) {
+            User user = (User) session.getAttribute("usPrincipal");
+
+            List<BoardListRespDto> boardListPS = boardService.getList(keyword, user.getId());
             model.addAttribute("boardList", boardListPS);
+
             return "board/list";
       }
 

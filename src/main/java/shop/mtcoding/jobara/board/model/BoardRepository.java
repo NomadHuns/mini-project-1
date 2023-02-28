@@ -9,6 +9,7 @@ import shop.mtcoding.jobara.board.dto.BoardResp.BoardListRespDto;
 import shop.mtcoding.jobara.board.dto.BoardResp.BoardMainRespDto;
 import shop.mtcoding.jobara.board.dto.BoardResp.BoardUpdateRespDto;
 import shop.mtcoding.jobara.board.dto.BoardResp.MyBoardListRespDto;
+import shop.mtcoding.jobara.tech.model.Tech;
 
 @Mapper
 public interface BoardRepository {
@@ -18,6 +19,8 @@ public interface BoardRepository {
     public List<BoardMainRespDto> findAllWithCompanyToMain();
 
     public List<BoardListRespDto> findAllWithCompany();
+
+    public List<BoardListRespDto> findAllForPreferedTech(Tech tech);
 
     public List<MyBoardListRespDto> findAllByIdWithCompany(int companyId);
 

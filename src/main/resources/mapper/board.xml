@@ -9,6 +9,21 @@
         select * from board_tb
     </select>
 
+    <select id="findAllForPreferedTech" resultType="shop.mtcoding.jobara.board.dto.BoardResp$BoardListRespDto">
+        SELECT bt.id, bt.title, ct.company_name, ct.id, ct.profile FROM 
+
+        (select * from TECH_TB  
+        where user_id is null
+        order by java = #{java} desc, c_lang= #{cLang} desc, python= #{python} desc, php= #{php} desc, 
+                 jsc= #{jsc} desc, ruby= #{ruby} desc, assemblyLang= #{assemblyLang} desc, sql_lang = #{sqlLang} desc) tb
+
+        inner join board_tb bt
+        on tb.board_id = bt.id
+
+        inner join company_tb ct
+        on bt.company_id = ct.id
+    </select>
+
     <select id="findAllWithCompanyToMain" resultType="shop.mtcoding.jobara.board.dto.BoardResp$BoardMainRespDto">
         SELECT bt.id, bt.title, ct.company_name, ct.id company_id, ct.profile FROM BOARD_TB bt
         inner join company_tb ct

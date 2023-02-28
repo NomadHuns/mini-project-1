@@ -12,6 +12,10 @@
         select * from tech_tb where id = #{id}
       </select>    
 
+      <select id="findByuserId" resultType="shop.mtcoding.jobara.tech.model.Tech">
+        select * from tech_tb where user_id = #{userId}
+      </select>    
+
       <select id="findByboardId" resultType="shop.mtcoding.jobara.tech.model.Tech">
         select * from tech_tb where board_id = #{boardId}
       </select>    
