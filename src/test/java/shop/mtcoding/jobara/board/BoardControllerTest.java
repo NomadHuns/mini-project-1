@@ -32,6 +32,7 @@ import shop.mtcoding.jobara.board.dto.BoardResp.BoardMainRespDto;
 import shop.mtcoding.jobara.board.dto.BoardResp.BoardUpdateRespDto;
 import shop.mtcoding.jobara.board.dto.BoardResp.MyBoardListRespDto;
 import shop.mtcoding.jobara.company.model.Company;
+import shop.mtcoding.jobara.tech.model.Tech;
 
 @Transactional
 @AutoConfigureMockMvc
@@ -90,7 +91,7 @@ public class BoardControllerTest {
         // given
         // int id = 1; 수정권한 없음 체크완료
         int id = 3;
-        String requestBody = "title=테스트제목&content=테스트내용&careerString=1년이상 ~ 3년미만";
+        String requestBody = "title=테스트제목&content=테스트내용&careerString=1년이상 ~ 3년미만&java=on&cLang=null&python=null&php=null&jsc=on&ruby=on&assemblyLang=null&sqlLang=on";
 
         // when
         ResultActions resultActions = mvc.perform(
@@ -115,13 +116,20 @@ public class BoardControllerTest {
                         .session(mockSession));
         Map<String, Object> map = resultActions.andReturn().getModelAndView().getModel();
         BoardUpdateRespDto boardDto = (BoardUpdateRespDto) map.get("boardDetail");
+        Tech techDto = (Tech) map.get("techDetail");
 
-        // String model = om.writeValueAsString(boardDto);
+        // String boardmodel = om.writeValueAsString(boardDto);
         // System.out.println("테스트 : " + model);
+        String techmodel = om.writeValueAsString(techDto);
+        // System.out.println("테스트 : " + techmodel);
+        System.out.println("테스트 : " + techmodel);
 
         // then
         resultActions.andExpect(status().isOk());
         assertThat(boardDto.getCareerString()).isEqualTo("6년이상");
+        assertThat(techDto.getBoardId()).isEqualTo(3);
+        assertThat(techDto.getPython()).isEqualTo("on");
+        assertThat(techDto.getCLang()).isEqualTo(null);
     }
 
     @Test
