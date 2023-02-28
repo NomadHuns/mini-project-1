@@ -100,7 +100,7 @@ public class BoardController {
       }
 
       @PostMapping("/board/save")
-      public String save(BoardInsertReqDto boardInsertReqDto) {
+      public String save(BoardInsertReqDto boardInsertReqDto, BoardTechReqDto boardTechReqDto) {
             Company coPrincipal = (Company) session.getAttribute("coPrincipal");
 
             // 인증
@@ -115,7 +115,8 @@ public class BoardController {
                   throw new CustomException("경력을 선택하세요");
             }
 
-            boardService.insertBoard(boardInsertReqDto, coPrincipal.getId());
+            int createdBoardId = boardService.insertBoard(boardInsertReqDto, coPrincipal.getId());
+            boardService.insertTech(boardTechReqDto, createdBoardId);
 
             return "redirect:/board/boardList/" + coPrincipal.getId();
       }

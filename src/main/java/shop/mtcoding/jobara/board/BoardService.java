@@ -49,7 +49,7 @@ public class BoardService {
     }
 
     @Transactional
-    public void insertBoard(BoardInsertReqDto boardInsertReqDto, int companyId) {
+    public int insertBoard(BoardInsertReqDto boardInsertReqDto, int companyId) {
 
         // career : String -> int parsing
         int career = CareerParse.careerToInt(boardInsertReqDto.getCareer());
@@ -61,6 +61,8 @@ public class BoardService {
         } catch (Exception e) {
             throw new CustomException("서버에 일시적인 문제가 생겼습니다", HttpStatus.INTERNAL_SERVER_ERROR);
         }
+
+        return board.getId();
     }
 
     @Transactional
@@ -168,13 +170,14 @@ public class BoardService {
     public void updateTech(BoardTechReqDto boardTechReqDto, int boardId) {
         Tech techPS = techRepository.findByboardId(boardId);
 
-        if (techPS == null) {
-            Tech tech = new Tech(boardId, boardTechReqDto);
-            techRepository.insert(tech);
-        } else {
-            techPS.updateBoard(boardTechReqDto);
-            techRepository.updateById(techPS);
-        }
+        techPS.updateBoard(boardTechReqDto);
+        techRepository.updateById(techPS);
+    }
+
+    public void insertTech(BoardTechReqDto boardTechReqDto, int boardId) {
+        Tech tech = new Tech(boardId, boardTechReqDto);
+
+        techRepository.insert(tech);
     }
 
 }
