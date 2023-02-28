@@ -135,7 +135,7 @@ public class BoardControllerTest {
     @Test
     public void save_test() throws Exception {
         // given
-        String requestBody = "title=테스트제목&content=테스트내용&career=1년이상 ~ 3년미만";
+        String requestBody = "title=테스트제목&content=테스트내용&career=1년이상 ~ 3년미만&java=on&cLang=null&python=null&php=null&jsc=on&ruby=on&assemblyLang=null&sqlLang=on";
 
         // when
         ResultActions resultActions = mvc.perform(
