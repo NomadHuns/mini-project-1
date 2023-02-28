@@ -3,7 +3,7 @@
     <%@ include file="../layout/header.jsp" %>
 
 
-        <form action="/board/update/${boardDetail.id}" method="post">
+        <form action="/board/save" method="post">
 
             <div class="container py-3 px-3">
                 <div class="justify-content-center d-flex my-3 py-3">
@@ -17,20 +17,24 @@
                     <div class="px-3">
                         <div class="title column py-3">
                             <input id="title" name="title" class="title form-control my-border-color-default"
-                                type="text" value="${boardDetail.title}">
+                                type="text" placeholder="제목을 입력해주세요.">
                         </div>
-                        <div class="content column py-4 ps-3  my-border-color-default" style="display: grid;
-                grid-template-columns: 4fr 6fr;">
-                            <div class="ms-4" style="display: grid; grid-template-columns: 2.7fr 7.3fr;">
-                                <div>
-                                    <div class="mb-3">경력</div>
-                                    <div class="mb-3">채용분야</div>
-                                    <div>마감일자</div>
+
+
+                        <div class="content column py-4 ps-3  my-border-color-default mb-3" style="display: grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr;">
+
+                            <div class="ms-1 ps-2" style="display: grid; grid-template-columns: 2fr 7.3fr;">
+
+                                <div class="mt-1">
+                                    <div>경력</div>
+
                                 </div>
-                                <div>
-                                    <div class="mb-3">
-                                        <select id="career" name="careerString" class="career my-border-color-default"
-                                            style="width: 50%;" value="${boardDetail.careerString}">
+                                <div class="mt-1">
+                                    <div>
+                                        <select name="career" class="career my-border-color-default"
+                                            style="width: 50%;">
+                                            <option>경력선택</option>
                                             <option>신입</option>
                                             <option>1년이상 ~ 3년미만</option>
                                             <option>3년이상 ~ 5년미만</option>
@@ -38,96 +42,213 @@
                                             <option>경력무관</option>
                                         </select>
                                     </div>
-                                    <div class="mb-3">
-                                        <select class="field my-border-color-default" style="width: 50%;">
-                                            <option>채용분야</option>
-                                            <option>백엔드</option>
-                                            <option>프론트엔드</option>
-                                            <option>김지윤</option>
-                                            <option>김지윤</option>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="ms-1 ps-3" style="display: grid; grid-template-columns: 2fr 7.3fr;">
+
+                                <div class="mt-1">
+
+                                    <div>학력</div>
+                                </div>
+                                <div class="mt-1">
+
+                                    <div>
+                                        <select class=" field my-border-color-default" style="width: 50%;">
+                                            <option>학력선택</option>
+                                            <option>고졸이상</option>
+                                            <option>2~3년 대졸이상</option>
+                                            <option>4년 대졸이상</option>
+                                            <option>학력무관</option>
                                         </select>
                                     </div>
-                                    <div>
-                                        <div class="Deadline">
-                                            <input type="date" class="form-control text-primary my-border-color-default"
-                                                style="width:60%" id="Deadline">
+                                </div>
+
+                            </div>
+
+
+
+
+
+
+                            <div>
+
+                                <div class="ms-1 ps-1" style="display: grid; grid-template-columns: 3fr 6fr;">
+
+                                    <div class="mt-1">
+                                        <div>근무형태</div>
+
+                                    </div>
+                                    <div class="mt-1">
+                                        <div>
+                                            <select name="career" class="career my-border-color-default"
+                                                style="width: 60%;">
+                                                <option>경력선택</option>
+                                                <option>신입</option>
+                                                <option>1년이상 ~ 3년미만</option>
+                                                <option>3년이상 ~ 5년미만</option>
+                                                <option>6년이상</option>
+                                                <option>경력무관</option>
+                                            </select>
                                         </div>
+
+
                                     </div>
                                 </div>
+
                             </div>
-                            <div style="display: grid;
-                    grid-template-columns: 1fr 8fr 2fr;">
+
+                            <div>
+
+                                <div class="ms-1 ps-3" style="display: grid; grid-template-columns: 4fr 8fr;">
+
+                                    <div class="mt-1 me-2">
+                                        <div>마감일자</div>
+                                    </div>
+                                    <div>
+
+                                        <div>
+                                            <div class="Deadline">
+                                                <input type="date"
+                                                    class="form-control text-primary my-border-color-default"
+                                                    style="width:90%" id="Deadline">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
+
+
+
+
+                        <div class="content column py-4 ps-2  my-border-color-default mb-3"
+                            style="display: grid; grid-template-columns: 5.5fr 7fr;">
+
+
+                            <div>
+                                <div class="ms-1 ps-3 mt-2" style="display: grid; grid-template-columns: 2fr 7fr;">
+
+                                    <div>
+                                        <div></div>
+                                        <div>우대사항</div>
+                                    </div>
+                                    <div>
+                                        <div>
+
+                                        </div>
+                                        <div>
+                                            <div class="form-group me-4">
+                                                <textarea class="form-control" id="exampleFormControlTextarea1"
+                                                    rows="3"></textarea>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="ps-4" style="display: grid; grid-template-columns: 0.8fr 9fr;">
+
+
                                 <div></div>
-                                <div>
-                                    <div class="mb-2"></div>
+
+                                <div class="ms-2">
+                                    <div class="mb-1"></div>
                                     <div class="mb-3">
                                         관심분야
                                     </div>
+
                                     <div class="mb-2">
                                         <div class="form-check form-check-inline" style="width: 19%">
-                                            <input class="form-check-input" type="checkbox" id="CheckboxJava"
-                                                value="option1">
+                                            <input class="form-check-input" type="checkbox" id="java" value="on"
+                                                name="Java">
                                             <label class="form-check-label" for="inlineCheckbox1">Java</label>
                                         </div>
                                         <div class="form-check form-check-inline" style="width: 19%">
-                                            <input class="form-check-input" type="checkbox" id="CheckboxSpring"
-                                                value="option2">
-                                            <label class="form-check-label" for="inlineCheckbox2">Spring</label>
+                                            <input class="form-check-input" type="checkbox" id="cLang" value="on"
+                                                name="cLang">
+                                            <label class="form-check-label" for="inlineCheckbox2">C#</label>
                                         </div>
                                         <div class="form-check form-check-inline" style="width: 19%">
-                                            <input class="form-check-input" type="checkbox" id="CheckboxOracle"
-                                                value="option1">
-                                            <label class="form-check-label" for="inlineCheckbox1">Oracle</label>
+                                            <input class="form-check-input" type="checkbox" id="python" value="on"
+                                                name="python">
+                                            <label class="form-check-label" for="inlineCheckbox1">Python</label>
                                         </div>
                                         <div class="form-check form-check-inline" style="width: 19%">
-                                            <input class="form-check-input" type="checkbox" id="CheckboxMySQL"
-                                                value="option2">
-                                            <label class="form-check-label" for="inlineCheckbox2">MySQL</label>
+                                            <input class="form-check-input" type="checkbox" id="php" value="on"
+                                                name="php">
+                                            <label class="form-check-label" for="inlineCheckbox2">PHP</label>
                                         </div>
                                     </div>
+
                                     <div>
                                         <div class="form-check form-check-inline" style="width: 19%">
-                                            <input class="form-check-input" type="checkbox" id="CheckboxReact"
-                                                value="option1">
-                                            <label class="form-check-label" for="inlineCheckbox1">React</label>
+                                            <input class="form-check-input" type="checkbox" id="jsc" value="on"
+                                                name="jsc">
+                                            <label class="form-check-label" for="inlineCheckbox1">JS</label>
                                         </div>
                                         <div class="form-check form-check-inline" style="width: 19%">
-                                            <input class="form-check-input" type="checkbox" id="CheckboxPython"
-                                                value="option2">
-                                            <label class="form-check-label" for="inlineCheckbox2">Python</label>
+                                            <input class="form-check-input" type="checkbox" id="ruby" value="on"
+                                                name="ruby">
+                                            <label class="form-check-label" for="inlineCheckbox2">Ruby</label>
                                         </div>
                                         <div class="form-check form-check-inline" style="width: 19%">
-                                            <input class="form-check-input" type="checkbox" id="CheckboxC"
-                                                value="option1">
-                                            <label class="form-check-label" for="inlineCheckbox1">C#</label>
+                                            <input class="form-check-input" type="checkbox" id="assemblyLang" value="on"
+                                                name="assemblyLang">
+                                            <label class="form-check-label" for="inlineCheckbox1">Assembly</label>
                                         </div>
                                         <div class="form-check form-check-inline" style="width: 19%">
-                                            <input class="form-check-input" type="checkbox" id="CheckboxSwift"
-                                                value="option2">
-                                            <label class="form-check-label" for="inlineCheckbox2">Swift</label>
+                                            <input class="form-check-input" type="checkbox" id="sqlLang" value="on"
+                                                name="sqlLang">
+                                            <label class="form-check-label" for="inlineCheckbox2">SQL</label>
                                         </div>
                                     </div>
+
+
                                     <div>
                                     </div>
+
+
                                 </div>
-                                <div></div>
+
+
+
+
+
                             </div>
+
+
                         </div>
+
+
+
                         <form class="mb-1 mt-4">
                             <div class="form-group">
                                 <textarea class="form-control summernote" rows="5" name="content"
-                                    id="content">${boardDetail.content}</textarea>
+                                    id="content"></textarea>
                         </form>
 
                     </div>
                 </div>
                 <div class="d-flex justify-content-center">
                     <div class="btn-group m-4" role="group" aria-label="Basic example ">
-                        <button type="submit" class="btn btn-primary" id="btnSave">수정</button>
+                        <button type="submit" class="btn btn-primary" id="btnSave">완료</button>
                     </div>
                     <div class="btn-group m-4" role="group" aria-label="Basic example ">
                         <button id="btnCancel" type="button" class="btn btn-secondary"
-                            onclick="location.href=`/board/${boardDetail.id}`;">취소</button>
+                            onclick="location.href='/board/list'">취소</button>
                     </div>
 
 
@@ -136,8 +257,6 @@
             </div>
         </form>
         <script>
-            $('#career').val('${boardDetail.careerString}').prop("selected",true);
-
             $('.summernote').summernote({
                 tabsize: 2,
                 height: 500
