@@ -1,5 +1,6 @@
 package shop.mtcoding.jobara.board;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import shop.mtcoding.jobara.board.dto.BoardReq.BoardInsertReqDto;
+import shop.mtcoding.jobara.board.dto.BoardReq.BoardInsertSkillReqDto;
 import shop.mtcoding.jobara.board.dto.BoardReq.BoardUpdateReqDto;
 import shop.mtcoding.jobara.board.dto.BoardResp.BoardDetailRespDto;
 import shop.mtcoding.jobara.board.dto.BoardResp.BoardListRespDto;
@@ -169,6 +171,13 @@ public class BoardService {
         }
 
         return myBoardListPS;
+    }
+
+    public void insertSkill(ArrayList<Integer> checkLang, int boardId) {
+
+        BoardInsertSkillReqDto boardInsertSkillReqDto = new BoardInsertSkillReqDto(boardId, checkLang);
+
+        boardRepository.insertSkill(boardInsertSkillReqDto);
     }
 
 }

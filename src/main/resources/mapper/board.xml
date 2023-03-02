@@ -58,6 +58,14 @@
         values(#{userId}, #{title}, #{content}, #{career}, #{jobType}, #{education}, #{favor}, now())
     </insert>
 
+    <insert id="insertSkill">
+        insert into boardtech_tb (board_id, skill) 
+          VALUES
+        <foreach collection="checkLang" item="skill" separator=",">
+            (#{boardId}, #{skill})
+        </foreach>
+    </insert> 
+
     <delete id="deleteById">
         delete from board_tb where id = #{id} 
     </delete>

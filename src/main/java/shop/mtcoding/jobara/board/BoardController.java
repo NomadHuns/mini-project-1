@@ -1,5 +1,6 @@
 package shop.mtcoding.jobara.board;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import shop.mtcoding.jobara.board.dto.BoardReq.BoardInsertReqDto;
 import shop.mtcoding.jobara.board.dto.BoardReq.BoardUpdateReqDto;
@@ -116,7 +118,7 @@ public class BoardController {
     }
 
     @PostMapping("/board/save")
-    public String save(BoardInsertReqDto boardInsertReqDto) {
+    public String save(BoardInsertReqDto boardInsertReqDto, @RequestParam ArrayList<Integer> checkLang) {
 
         UserVo principal = (UserVo) session.getAttribute("principal");
 
@@ -142,7 +144,8 @@ public class BoardController {
             throw new CustomException("근무형태를 선택하세요");
         }
 
-        boardService.insertBoard(boardInsertReqDto, principal.getId());
+        int boardId = boardService.insertBoard(boardInsertReqDto, principal.getId());
+        boardService.insertSkill(checkLang, boardId);
 
         return "redirect:/board/boardList/" + principal.getId();
     }

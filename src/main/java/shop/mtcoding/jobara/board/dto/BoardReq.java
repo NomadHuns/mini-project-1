@@ -1,6 +1,9 @@
 package shop.mtcoding.jobara.board.dto;
 
+import java.util.ArrayList;
+
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 public class BoardReq {
@@ -38,5 +41,19 @@ public class BoardReq {
 
         private String favor;
         private Integer userId;
+    }
+
+    @NoArgsConstructor
+    @Getter
+    @Setter
+    public static class BoardInsertSkillReqDto {
+        private Integer boardId;
+        private ArrayList<Integer> checkLang;
+
+        public BoardInsertSkillReqDto(Integer boardId, ArrayList<Integer> checkLang) {
+            this.boardId = boardId;
+            this.checkLang = checkLang;
+        }
+
     }
 }
