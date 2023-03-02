@@ -21,6 +21,14 @@
         delete from boardtech_tb where board_id = #{boardId} 
     </delete>    
 
+    <insert id="insertSkill">
+        insert into boardtech_tb (board_id, skill) 
+          VALUES
+        <foreach collection="checkLang" item="skill" separator=",">
+            (#{boardId}, #{skill})
+        </foreach>
+    </insert> 
+
     <update id="updateByBoardId">
         update boardtech_tb 
            set skill = #{skill}

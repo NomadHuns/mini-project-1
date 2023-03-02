@@ -18,6 +18,7 @@ import shop.mtcoding.jobara.board.dto.BoardResp.BoardUpdateRespDto;
 import shop.mtcoding.jobara.board.dto.BoardResp.MyBoardListRespDto;
 import shop.mtcoding.jobara.board.model.Board;
 import shop.mtcoding.jobara.board.model.BoardRepository;
+import shop.mtcoding.jobara.board.model.BoardTechRepository;
 import shop.mtcoding.jobara.common.ex.CustomException;
 import shop.mtcoding.jobara.common.util.CareerParse;
 import shop.mtcoding.jobara.common.util.EducationParse;
@@ -28,6 +29,9 @@ public class BoardService {
 
     @Autowired
     BoardRepository boardRepository;
+
+    @Autowired
+    BoardTechRepository boardTechRepository;
 
     @Transactional(readOnly = true)
     public List<BoardMainRespDto> getListToMain() {
@@ -177,7 +181,7 @@ public class BoardService {
 
         BoardInsertSkillReqDto boardInsertSkillReqDto = new BoardInsertSkillReqDto(boardId, checkLang);
 
-        boardRepository.insertSkill(boardInsertSkillReqDto);
+        boardTechRepository.insertSkill(boardInsertSkillReqDto);
     }
 
 }

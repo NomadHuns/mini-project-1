@@ -2,6 +2,8 @@ package shop.mtcoding.jobara.board;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -10,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import shop.mtcoding.jobara.board.dto.BoardReq.BoardInsertSkillReqDto;
 import shop.mtcoding.jobara.board.dto.BoardResp.BoardDetailRespDto;
 import shop.mtcoding.jobara.board.dto.BoardResp.MyBoardListRespDto;
 import shop.mtcoding.jobara.board.model.BoardRepository;
@@ -49,4 +52,5 @@ public class BoardRepositoryTest {
         // then
         assertThat(myBoardListRespDto.get(1).getTitle()).isEqualTo("공고제목2");
     }
+
 }
