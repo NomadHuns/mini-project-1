@@ -63,7 +63,7 @@ public class BoardRepositoryTest {
         ObjectMapper om = new ObjectMapper();
         List<BoardTech> boardTechList1 = boardTechRepository.findAll();
         String res1 = om.writeValueAsString(boardTechList1);
-        // System.out.println("디버깅1 : " + res1);
+        // System.out.println("테스트1 : " + res1);
 
         int boardId = 5;
         ArrayList<Integer> arrayList = new ArrayList<>(Arrays.asList(1, 3, 5, 7));
@@ -73,7 +73,22 @@ public class BoardRepositoryTest {
         boardTechRepository.insertSkill(boardInsertSkillReqDto);
         List<BoardTech> boardTechList2 = boardTechRepository.findAll();
         String res2 = om.writeValueAsString(boardTechList2);
-        // System.out.println("디버깅2 : " + res2);
+        // System.out.println("테스트2 : " + res2);
+
+        // then
+
+    }
+
+    @Test
+    public void findByIdWithSkillForDetail_test() throws Exception {
+        // given
+        ObjectMapper om = new ObjectMapper();
+        int boardId = 1;
+
+        // when
+        ArrayList<Integer> arrayList = boardTechRepository.findByIdWithSkillForDetail(boardId);
+        String res = om.writeValueAsString(arrayList);
+        System.out.println("테스트 : " + res);
 
         // then
 
