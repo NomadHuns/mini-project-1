@@ -265,7 +265,6 @@
         <script>
             var boardSkillArr = ${ boardSkill };
 
-            console.log(boardSkillArr);
             boardSkillArr.forEach(num => {
                 var lang = num
                 var id = "lang" + num
@@ -281,7 +280,7 @@
                 let jobTypeString = $("#jobTypeString").val();
                 let favor = $("#favor").val();
                 let userId = $("#userId").val();
-                
+
                 let checkedValues = [];
                 $('input[name="lang"]:checked').each(function () {
                     checkedValues.push($(this).val());

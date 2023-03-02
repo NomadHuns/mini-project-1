@@ -99,9 +99,7 @@ public class BoardController {
 
     @PutMapping("/board/update/{id}")
     public ResponseEntity<?> update(@PathVariable int id, @RequestBody BoardUpdateReqDto boardUpdateReqDto) {
-
         UserVo principal = (UserVo) session.getAttribute("principal");
-
         // 인증체크
         Verify.validateObject(
                 principal, "로그인이 필요한 페이지입니다", HttpStatus.BAD_REQUEST,
@@ -116,6 +114,7 @@ public class BoardController {
         Verify.validateString(boardUpdateReqDto.getCareerString(), "경력을 입력하세요");
 
         boardService.updateBoard(boardUpdateReqDto, principal.getId());
+        boardService.updateTech(boardUpdateReqDto.getCheckedValues(), id);
 
         return new ResponseEntity<>(new ResponseDto<>(1, "게시글 수정완료", null), HttpStatus.OK);
     }

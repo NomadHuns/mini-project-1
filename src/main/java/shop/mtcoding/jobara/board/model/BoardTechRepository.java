@@ -11,7 +11,7 @@ import shop.mtcoding.jobara.board.dto.BoardReq.BoardInsertSkillReqDto;
 public interface BoardTechRepository {
     public List<BoardTech> findAll();
 
-    public BoardTech findById(int id);
+    public BoardTech findByBoardId(int id);
 
     public ArrayList<Integer> findByIdWithSkillForDetail(int boardId);
 
@@ -19,7 +19,7 @@ public interface BoardTechRepository {
 
     public int insertSkill(BoardInsertSkillReqDto boardInsertSkillReqDto);
 
-    public int updateById(BoardTech boardTech);
+    public int updateByBoardId(BoardTech boardTech);
 
-    public int deleteById(int id);
+    public int deleteByBoardId(int id);
 }

@@ -177,17 +177,46 @@ public class BoardService {
         return myBoardListPS;
     }
 
+    @Transactional
     public void insertSkill(ArrayList<Integer> checkLang, int boardId) {
 
         BoardInsertSkillReqDto boardInsertSkillReqDto = new BoardInsertSkillReqDto(boardId, checkLang);
 
-        boardTechRepository.insertSkill(boardInsertSkillReqDto);
+        try {
+            boardTechRepository.insertSkill(boardInsertSkillReqDto);
+        } catch (Exception e) {
+            throw new CustomException("서버에 일시적인 문제가 생겼습니다", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
     }
 
+    @Transactional(readOnly = true)
     public ArrayList<Integer> getSkillForDetail(int boardId) {
+        ArrayList<Integer> checkLang;
 
-        ArrayList<Integer> checkLang = boardTechRepository.findByIdWithSkillForDetail(boardId);
-
+        try {
+            checkLang = boardTechRepository.findByIdWithSkillForDetail(boardId);
+        } catch (Exception e) {
+            throw new CustomException("서버에 일시적인 문제가 생겼습니다", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
         return checkLang;
     }
+
+    @Transactional
+    public void updateTech(ArrayList<Integer> techList, int boardId) {
+        try {
+            boardTechRepository.deleteByBoardId(boardId);
+        } catch (Exception e) {
+            throw new CustomException("서버에 일시적인 문제가 생겼습니다", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        BoardInsertSkillReqDto boardInsertSkillReqDto = new BoardInsertSkillReqDto(boardId, techList);
+        try {
+            boardTechRepository.insertSkill(boardInsertSkillReqDto);
+        } catch (Exception e) {
+            throw new CustomException("서버에 일시적인 문제가 생겼습니다", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+    }
+
 }
