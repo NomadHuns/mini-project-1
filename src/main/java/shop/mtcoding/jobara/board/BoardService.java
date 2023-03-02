@@ -219,4 +219,9 @@ public class BoardService {
 
     }
 
+    public List<BoardListRespDto> getLangMatchList(int userId) {
+
+        return boardRepository.findAllByUserIdForLangMatching(userId);
+    }
+
 }

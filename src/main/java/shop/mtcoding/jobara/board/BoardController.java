@@ -40,6 +40,7 @@ public class BoardController {
 
     @GetMapping({ "/", "/home" })
     public String home(Model model) {
+
         List<BoardMainRespDto> boardListPS = boardService.getListToMain();
         model.addAttribute("boardMainList", boardListPS);
 
@@ -54,9 +55,21 @@ public class BoardController {
     }
 
     @GetMapping("/board/list")
-    public String list(Model model) {
-        List<BoardListRespDto> boardListPS = boardService.getList();
-        model.addAttribute("boardList", boardListPS);
+    public String list(Model model, String keyword) {
+
+        if (keyword == null) {
+            keyword = "";
+        }
+        UserVo principalCheck = (UserVo) session.getAttribute("principal");
+
+        if (keyword.equals("lang") && principalCheck.getRole().equals("employee")) {
+            List<BoardListRespDto> boardListPS = boardService.getLangMatchList(principalCheck.getId());
+            model.addAttribute("boardList", boardListPS);
+            model.addAttribute("check", "lang");
+        } else {
+            List<BoardListRespDto> boardListPS = boardService.getList();
+            model.addAttribute("boardList", boardListPS);
+        }
 
         return "board/list";
     }
