@@ -20,6 +20,7 @@ import shop.mtcoding.jobara.employee.dto.EmployeeReq.EmployeeLoginReqDto;
 import shop.mtcoding.jobara.employee.dto.EmployeeReq.EmployeeUpdateReqDto;
 import shop.mtcoding.jobara.employee.dto.EmployeeResp.EmployeeAndResumeRespDto;
 import shop.mtcoding.jobara.employee.dto.EmployeeResp.EmployeeUpdateRespDto;
+import shop.mtcoding.jobara.user.model.User;
 import shop.mtcoding.jobara.user.vo.UserVo;
 
 @Controller
@@ -43,8 +44,17 @@ public class EmployeeController {
 
     @GetMapping("/employee/list")
     public String employeeList(Model model) {
-        List<EmployeeAndResumeRespDto> employeeListPS = employeeService.getEmployee().subList(0, 4);
-        model.addAttribute("employeeList", employeeListPS);
+        UserVo principal = (UserVo) session.getAttribute("principal");
+        List<EmployeeAndResumeRespDto> employeeListPS = employeeService.getEmployee();
+        model.addAttribute("allEmployeeList", employeeListPS);
+        model.addAttribute("principal", principal);
+        if (principal != null) {
+            if (principal.getRole().equals("company")) {
+                List<EmployeeAndResumeRespDto> recommendEmployeeListPS = employeeService
+                        .getRecommendEmployee(principal.getId());
+                model.addAttribute("recommendEmployeeList", recommendEmployeeListPS);
+            }
+        }
         return "employee/list";
     }
 

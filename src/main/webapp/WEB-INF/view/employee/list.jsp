@@ -13,10 +13,53 @@
                         <option> 날짜순</option>
                   </select>
             </div>
-            <div class="my-border-color-default p-3">
-                  <!-- 카드 들어갈 곳 -->
-                  <div class="row gx-3">
-                        <c:forEach items="${employeeList}" var="employee">
+            <c:choose>
+                  <c:when test="${principal.role eq 'company'}">
+                  <h2 style="text-align: center;">최근 공고에 대한 추천 유저입니다.</h2>
+                  <div class="my-border-color-default p-3">
+                        <!-- 카드 들어갈 곳 -->
+                        <div class="row gx-3">
+                              <c:forEach items="${recommendEmployeeList}" var="recommendEmployee">
+                              <div class="col-md-3 py-2">
+                                    <div id="employee${recommendEmployee.id}" onmouseenter="mouseEnterImages(this)"
+                                          onmouseleave="mouseLeaveImages(this)" class="card col-lg-12">
+                                          <a href="/employee/${recommendEmployee.id}" class="no_under_line_link">
+                                                <img class="card-img-top" style="height: 100px;" src="${recommendEmployee.profile == null ? " /images/newjeans.jpg" :
+                                                recommendEmployee.profile}"
+                                                      alt="Card image">
+                                                <div class="card-body">
+                                                      <div class="my-text-ellipsis">
+                                                            <h5>${recommendEmployee.realName}</h5>
+                                                      </div>
+                                                      <div class="my-text-ellipsis">
+                                                            <c:choose>
+                                                            <c:when test="${recommendEmployee.career == 0}">
+                                                            신입
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                            ${recommendEmployee.career} 년차
+                                                            </c:otherwise>
+                                                            </c:choose>
+                                                      </div>
+                                                      <div class="my-text-ellipsis">
+                                                            ${recommendEmployee.title}
+                                                      </div>
+                                                </div>
+                                          </a>
+                                          <div class="card-footer d-flex justify-content-between">
+                                                <div>${recommendEmployee.createdAt}</div>
+                                                <div><i id="heart" class="fa-regular fa-heart my-xl my-cursor fa-lg"></i>
+                                                </div>
+                                          </div>
+                                    </div>
+                              </div>
+                              </c:forEach>
+                              <!-- 반복문 종료 -->
+                        </div>
+                  </div>
+                  <div class="p-3">
+                  <div class="row">
+                  <c:forEach items="${allEmployeeList}" var="employee">
                         <div class="col-md-3 py-2">
                               <div id="employee${employee.id}" onmouseenter="mouseEnterImages(this)"
                                     onmouseleave="mouseLeaveImages(this)" class="card col-lg-12">
@@ -51,113 +94,52 @@
                               </div>
                         </div>
                         </c:forEach>
-                        <!-- 반복문 종료 -->
                   </div>
-            </div>
-            <div class="p-3">
-                  <div class="row">
-                        <div class="col-md-3 py-2">
-                              <div id="userImage5" onmouseenter="mouseEnterImages(this)"
-                                    onmouseleave="mouseLeaveImages(this)" class="card col-lg-12">
-                                    <a href="/employee/1" class="no_under_line_link">
-                                          <img class="card-img-top" style="height: 100px;" src="/images/newjeans.jpg"
-                                                alt="Card image">
-                                          <div class="card-body">
-                                                <div class="my-text-ellipsis">
-                                                      <h5>박이름</h5>
+            </div>                                 
+                  </c:when>
+                  <c:otherwise>
+                  <div class="p-3">
+                        <div class="row">
+                        <c:forEach items="${allEmployeeList}" var="employee">
+                              <div class="col-md-3 py-2">
+                                    <div id="employee${employee.id}" onmouseenter="mouseEnterImages(this)"
+                                          onmouseleave="mouseLeaveImages(this)" class="card col-lg-12">
+                                          <a href="/employee/${employee.id}" class="no_under_line_link">
+                                                <img class="card-img-top" style="height: 100px;" src="${user.profile == null ? " /images/newjeans.jpg" :
+                                                employee.profile}"
+                                                      alt="Card image">
+                                                <div class="card-body">
+                                                      <div class="my-text-ellipsis">
+                                                            <h5>${employee.realName}</h5>
+                                                      </div>
+                                                      <div class="my-text-ellipsis">
+                                                            <c:choose>
+                                                            <c:when test="${employee.career == 0}">
+                                                            신입
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                            ${employee.career} 년차
+                                                            </c:otherwise>
+                                                            </c:choose>
+                                                      </div>
+                                                      <div class="my-text-ellipsis">
+                                                            ${employee.title}
+                                                      </div>
                                                 </div>
-                                                <div class="my-text-ellipsis">
-                                                      IT직 경력 5년차
+                                          </a>
+                                          <div class="card-footer d-flex justify-content-between">
+                                                <div>${employee.createdAt}</div>
+                                                <div><i id="heart" class="fa-regular fa-heart my-xl my-cursor fa-lg"></i>
                                                 </div>
-                                                <div class="my-text-ellipsis">
-                                                      자기소개문
-                                                </div>
-                                          </div>
-                                    </a>
-                                    <div class="card-footer d-flex justify-content-between">
-                                          <div>2023.01.01</div>
-                                          <div><i id="heart" class="fa-regular fa-heart my-xl my-cursor fa-lg"></i>
                                           </div>
                                     </div>
                               </div>
-                        </div>
-                        <div class="col-md-3 py-2">
-                              <div id="userImage6" onmouseenter="mouseEnterImages(this)"
-                                    onmouseleave="mouseLeaveImages(this)" class="card col-lg-12">
-                                    <a href="/employee/1" class="no_under_line_link">
-                                          <img class="card-img-top" style="height: 100px;" src="/images/newjeans.jpg"
-                                                alt="Card image">
-                                          <div class="card-body">
-                                                <div class="my-text-ellipsis">
-                                                      <h5>박네임</h5>
-                                                </div>
-                                                <div class="my-text-ellipsis">
-                                                      IT직 신입
-                                                </div>
-                                                <div class="my-text-ellipsis">
-                                                      자기소개문
-                                                </div>
-                                          </div>
-                                    </a>
-                                    <div class="card-footer d-flex justify-content-between">
-                                          <div>2023.01.01</div>
-                                          <div><i id="heart" class="fa-regular fa-heart my-xl my-cursor fa-lg"></i>
-                                          </div>
-                                    </div>
-                              </div>
-                        </div>
-                        <div class="col-md-3 py-2">
-                              <div id="userImage7" onmouseenter="mouseEnterImages(this)"
-                                    onmouseleave="mouseLeaveImages(this)" class="card col-lg-12">
-                                    <a href="/employee/1" class="no_under_line_link">
-                                          <img class="card-img-top" style="height: 100px;" src="/images/newjeans.jpg"
-                                                alt="Card image">
-                                          <div class="card-body">
-                                                <div class="my-text-ellipsis">
-                                                      <h5>최이름</h5>
-                                                </div>
-                                                <div class="my-text-ellipsis">
-                                                      IT직 경력 7년차
-                                                </div>
-                                                <div class="my-text-ellipsis">
-                                                      자기소개문
-                                                </div>
-                                          </div>
-                                    </a>
-                                    <div class="card-footer d-flex justify-content-between">
-                                          <div>2023.01.01</div>
-                                          <div><i id="heart" class="fa-regular fa-heart my-xl my-cursor fa-lg"></i>
-                                          </div>
-                                    </div>
-                              </div>
-                        </div>
-                        <div class="col-md-3 py-2">
-                              <div id="userImage8" onmouseenter="mouseEnterImages(this)"
-                                    onmouseleave="mouseLeaveImages(this)" class="card col-lg-12">
-                                    <a href="/employee/1" class="no_under_line_link">
-                                          <img class="card-img-top" style="height: 100px;" src="/images/newjeans.jpg"
-                                                alt="Card image">
-                                          <div class="card-body">
-                                                <div class="my-text-ellipsis">
-                                                      <h5>최네임</h5>
-                                                </div>
-                                                <div class="my-text-ellipsis">
-                                                      IT직 신입
-                                                </div>
-                                                <div class="my-text-ellipsis">
-                                                      자기소개문
-                                                </div>
-                                          </div>
-                                    </a>
-                                    <div class="card-footer d-flex justify-content-between">
-                                          <div>2023.01.01</div>
-                                          <div><i id="heart" class="fa-regular fa-heart my-xl my-cursor fa-lg"></i>
-                                          </div>
-                                    </div>
-                              </div>
+                        </c:forEach>
                         </div>
                   </div>
-            </div>
+                  </c:otherwise>
+            </c:choose>
+            
       </div>
       <script>
             function mouseEnterImages(e) {

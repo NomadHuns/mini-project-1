@@ -15,6 +15,8 @@ public interface EmployeeRepository {
 
     public EmployeeAndResumeRespDto findEmployeeByIdWithResume(int id);
 
+    public List<EmployeeAndResumeRespDto> findRecommendWithResume(int id);
+
     public Employee findByUserId(int userId);
 
     public int insert(int userId);

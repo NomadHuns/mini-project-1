@@ -32,6 +32,11 @@ public class EmployeeService {
         return employeePS;
     }
 
+    public List<EmployeeAndResumeRespDto> getRecommendEmployee(int id) {
+        List<EmployeeAndResumeRespDto> employeePS = employeeRepository.findRecommendWithResume(id);
+        return employeePS;
+    }
+
     public EmployeeAndResumeRespDto getEmployee(int id) {
         EmployeeAndResumeRespDto employeePS = employeeRepository.findEmployeeByIdWithResume(id);
         return employeePS;
