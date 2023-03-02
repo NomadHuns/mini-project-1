@@ -52,10 +52,11 @@ public class BoardControllerTest {
     public void setUp() {
         UserVo principal = new UserVo();
         principal.setId(6);
+        // principal.setId(1);
         principal.setUsername("cos");
         principal.setRole("company");
 
-        // companyUser.setRole("employee");
+        // principal.setRole("employee");
 
         mockSession = new MockHttpSession();
         mockSession.setAttribute("principal", principal);
@@ -220,10 +221,12 @@ public class BoardControllerTest {
     @Test
     public void boardList_test() throws Exception {
         // given
+        String keyword = "lang";
 
         // when
         ResultActions resultActions = mvc.perform(
-                get("/board/list"));
+                get("/board/list?keyword=lang")
+                        .session(mockSession));
 
         Map<String, Object> map = resultActions.andReturn().getModelAndView().getModel();
         List<BoardListRespDto> boardList = (List<BoardListRespDto>) map.get("boardList");
