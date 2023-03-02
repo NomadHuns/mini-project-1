@@ -22,21 +22,22 @@
             </div>
             <div class="justify-content-center d-flex">
                 <div class="my-border-color-default px-3 py-3" style="width: 50%; ">
-                    <form action="/user/join" method="post" onsubmit="return valid()">
+                    <form action="/employee/join" method="post" onsubmit="return valid()">
                         <div class="mb-3">
                             <label class="form-label">아이디</label>
-                                <input id="username" name="username" type="text" class="form-control" placeholder="Username" onchange="checkUsername()">
+                            <input id="username" name="username" type="text" class="form-control" placeholder="Username"
+                                onchange="checkUsername()">
                         </div>
                         <div id="usernameCheck"></div>
                         <div class="mb-3">
                             <label class="form-label">비밀번호</label>
-                            <input type="password" name="password" id="password" class="form-control" placeholder="Password"
-                                onchange="checkSamePassword()">
+                            <input type="password" name="password" id="password" class="form-control"
+                                placeholder="Password" onchange="checkSamePassword()">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">비밀번호확인</label>
-                            <input type="password" class="form-control" id="passwordCheck" placeholder="Confirm Password"
-                                onchange="checkSamePassword()">
+                            <input type="password" class="form-control" id="passwordCheck"
+                                placeholder="Confirm Password" onchange="checkSamePassword()">
                         </div>
                         <div id="passwordCheckAlert">
                         </div>
@@ -52,7 +53,7 @@ Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit laudanti
                     </textarea>
                         </div>
                         <div class="mb-3 form-check d-flex justify-content-end">
-                            <input type="checkbox" class="form-check-input">
+                            <input id="terms1" type="checkbox" class="form-check-input">
                             <label class="form-check-label ms-2">동의합니다</label>
                         </div>
                         <div class="mb-3">
@@ -63,7 +64,7 @@ Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit laudanti
                         </textarea>
                         </div>
                         <div class="mb-3 form-check d-flex justify-content-end">
-                            <input type="checkbox" class="form-check-input">
+                            <input id="terms2" type="checkbox" class="form-check-input">
                             <label class="form-check-label ms-2">동의합니다</label>
                         </div>
                         <div class="d-flex justify-content-center">
@@ -110,25 +111,25 @@ Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit laudanti
                 }
             }
 
-            function checkUsername(){
+            function checkUsername() {
                 let username = $("#username").val();
 
                 $.ajax({
                     type: "get",
-                    url: "/user/checkUsername?username=" + username
+                    url: "/usernameSameCheck?username=" + username
                 }).done(res => {
                     console.log(res);
                     if (res.code == 1) {
                         $("#usernameCheck").empty();
                         let el = `<div class="alert alert-success" id="usernameCheck">
-                                  <strong>`+res.msg+`</strong>
+                                  <strong>`+ res.msg + `</strong>
                                   </div>`;
-                                  $("#usernameCheck").append(el);
+                        $("#usernameCheck").append(el);
                         checkUser = true;
                     } else {
                         $("#usernameCheck").empty();
                         let el = `<div class="alert alert-danger" id="usernameCheck">
-                                  <strong>`+res.msg+`</strong>
+                                  <strong>`+ res.msg + `</strong>
                                   </div>`;
                         $("#usernameCheck").append(el);
                         checkUser = false;

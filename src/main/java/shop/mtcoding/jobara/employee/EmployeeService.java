@@ -79,12 +79,12 @@ public class EmployeeService {
     @Transactional
     public UserVo updateEmpolyee(EmployeeUpdateReqDto employeeUpdateReqDto, Integer principalId,
             MultipartFile profile) {
-        // String uuidImageName = PathUtil.writeImageFile(profile);
+        String uuidImageName = PathUtil.writeImageFile(profile);
 
         User user = new User(principalId, employeeUpdateReqDto.getPassword(), employeeUpdateReqDto.getEmail(),
                 employeeUpdateReqDto.getAddress(), employeeUpdateReqDto.getDetailAddress(),
                 employeeUpdateReqDto.getTel(),
-                null);
+                uuidImageName);
         Employee employee = new Employee(principalId, employeeUpdateReqDto.getRealName(),
                 employeeUpdateReqDto.getCareer(),
                 employeeUpdateReqDto.getEducation());

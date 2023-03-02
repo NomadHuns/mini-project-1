@@ -51,6 +51,5 @@ public class UserController {
         } else {
             return new ResponseEntity<>(new ResponseDto<>(-1, "이미 존재하는 유저네임 입니다.", false), HttpStatus.OK);
         }
-
     }
 }

@@ -8,7 +8,7 @@
         </div>
         <div class="justify-content-center d-flex">
             <nav class="navbar navbar-expand-sm bg-light navbar-light" style="width: 50%;">
-                <div class="container-fluid">
+                <div class="container-fluid" style="display : none; visibility : hidden;">
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">일반회원</a>

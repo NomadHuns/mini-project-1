@@ -34,7 +34,7 @@
                                 <div class="form-group d-flex justify-content-center my-thumbnail-color-default "
                                     style="height: 150px; width: 150px; align-items: center">
 
-                                <img id="imagePreview" src="${principal.profile == null ? "/images/defaultProfile.png" : usPrincipal.profile}" alt="Current Photo"
+                                <img id="imagePreview" src="${principal.profile == null ? "/images/defaultProfile.png" : principal.profile}" alt="Current Photo"
                                                 class="img-fluid" style="height:80px; ">
                                 </div>
                             </div>
@@ -174,6 +174,7 @@
 
                     if (!f.type.match("image.*")) {
                         alert("이미지를 등록해야 합니다.");
+                        $("#thumbnail").val("");
                         return;
                     }
 

@@ -103,7 +103,7 @@ Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit laudanti
 
                 $.ajax({
                     type: "get",
-                    url: "/company/usernameSameCheck?username=" + username,
+                    url: "/usernameSameCheck?username=" + username,
                 }).done((res) => {
                     if (res.data == true) {
                         $("#usernameCheck").empty();
