@@ -38,4 +38,15 @@ public class EmployeeRepositoryTest {
             assertThat(employeeAndResumeRespDto.getRealName()).isEqualTo("제갈구글");
             assertThat(employeeAndResumeRespDto.getRole()).isEqualTo("employee");
       }
+
+      @Test
+      public void findRecommendWithResume_test() {
+            // given
+            int id = 6;
+            // when
+            List<EmployeeAndResumeRespDto> employeeAndResumeRespDto = employeeRepository.findRecommendWithResume(id);
+            // then
+            assertThat(employeeAndResumeRespDto.get(0).getRealName()).isEqualTo("김살");
+            assertThat(employeeAndResumeRespDto.get(1).getRealName()).isEqualTo("박사랑");
+      }
 }
