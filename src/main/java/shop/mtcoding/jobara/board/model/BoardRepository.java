@@ -20,6 +20,8 @@ public interface BoardRepository {
 
     public List<BoardListRespDto> findAllWithCompany();
 
+    public List<BoardListRespDto> findAllByUserIdForLangMatching(int userId);
+
     public List<BoardMainRespDto> findAllWithCompanyToMain();
 
     public List<MyBoardListRespDto> findAllByIdWithCompany(int userId);

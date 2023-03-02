@@ -9,6 +9,24 @@
         select * from board_tb
     </select>
 
+    <select id="findAllByUserIdForLangMatching" resultType="shop.mtcoding.jobara.board.dto.BoardResp$BoardListRespDto">
+        select bt.id, bt.title, ct.company_name, ut.id user_id, ut.profile from
+
+        (   select * from board_tb 
+            where board_tb.id in (
+            SELECT distinct bt.board_id 
+            FROM BOARDTECH_TB bt
+            inner join employeetech_tb dt
+            where bt.skill in 
+            ( select dt.skill where dt.user_id = #{userId}))  ) bt
+
+        inner join company_tb ct
+        on bt.user_id = ct.user_id
+        
+        inner join user_tb ut
+        on bt.user_id=ut.id
+    </select>
+
     <select id="findAllWithCompany" resultType="shop.mtcoding.jobara.board.dto.BoardResp$BoardListRespDto">
         SELECT bt.id, bt.title, ct.company_name, ut.id user_id, ut.profile FROM BOARD_TB bt
         inner join company_tb ct
