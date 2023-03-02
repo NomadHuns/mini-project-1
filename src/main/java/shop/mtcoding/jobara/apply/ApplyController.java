@@ -74,8 +74,8 @@ public class ApplyController {
         return "employee/applyList";
     }
 
-    @PutMapping("/apply/decide")
-    public @ResponseBody ResponseEntity<?> decideApplyment(@RequestBody ApplyDecideReqDto applyDecideReqDto) {
+    @PutMapping("board/{id}/apply")
+    public @ResponseBody ResponseEntity<?> decideApplyment(@PathVariable int id,@RequestBody ApplyDecideReqDto applyDecideReqDto) {
         UserVo principal = (UserVo) session.getAttribute("principal");
         Verify.validateObject(principal, "로그인이 필요한 기능입니다");
         if (!principal.getRole().equals("company")) {
@@ -83,7 +83,7 @@ public class ApplyController {
         }
         Verify.validateApiObject(applyDecideReqDto.getUserId(), "처리할 유저 Id를 입력하세요.");
         Verify.validateApiObject(applyDecideReqDto.getState(), "처리할 결과 코드를 입력하세요.");
-        applyService.approveApply(applyDecideReqDto);
+        applyService.approveApply(applyDecideReqDto, id);
         return new ResponseEntity<>(new ResponseDto<>(1, "상태 변경 완료", null), HttpStatus.OK);
     }
 }

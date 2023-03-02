@@ -105,20 +105,22 @@ public class ApplyControllerTest {
     @Test
     public void decideApplyment_test() throws Exception {
         // given
+        int boardId = 1;
         ApplyDecideReqDto applyDecideReqDto = new ApplyDecideReqDto(2, 1);
         String requestBody = om.writeValueAsString(applyDecideReqDto);
-        System.out.println("테스트 : " + requestBody);
+        // System.out.println("테스트 : " + requestBody);
 
         // when
         ResultActions resultActions = mvc.perform(
-                put("/apply/decide")
+                put("board/"+boardId+"/apply")
                         .content(requestBody)
                         .contentType(MediaType.APPLICATION_JSON_VALUE)
                         .session(mockSession));
         String responseBody = resultActions.andReturn().getResponse().getContentAsString();
-        System.out.println("테스트 : " + responseBody);
+        // System.out.println("테스트 : " + responseBody);
 
         // verify
         resultActions.andExpect(status().isOk());
+        resultActions.andExpect(jsonPath("$.code").value(1));
     }
 }

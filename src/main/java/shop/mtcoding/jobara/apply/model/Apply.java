@@ -22,6 +22,12 @@ public class Apply {
         this.boardId = boardId;
     }
 
+    public Apply(Integer boardId, Integer userId, Integer state) {
+        this.userId = userId;
+        this.boardId = boardId;
+        this.state = state;
+    }
+
     public String getCreatedAtToString() {
         return DateParse.format(createdAt);
     }

@@ -16,6 +16,8 @@ import shop.mtcoding.jobara.board.model.Board;
 import shop.mtcoding.jobara.board.model.BoardRepository;
 import shop.mtcoding.jobara.common.ex.CustomApiException;
 import shop.mtcoding.jobara.common.util.Verify;
+import shop.mtcoding.jobara.user.model.User;
+import shop.mtcoding.jobara.user.model.UserRepository;
 
 @Service
 public class ApplyService {
@@ -24,6 +26,9 @@ public class ApplyService {
 
     @Autowired
     private BoardRepository boardRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Transactional
     public void insertApply(Integer boardId, Integer principalId) {
@@ -51,7 +56,14 @@ public class ApplyService {
     }
 
     @Transactional
-    public void approveApply(ApplyDecideReqDto applyDecideReqDto) {
+    public void approveApply(ApplyDecideReqDto applyDecideReqDto, int boradId) {
+        User user = userRepository.findById(applyDecideReqDto.getUserId());
+        Verify.validateApiObject(user, "존재하지 않는 유저입니다.");
+        Apply apply = new Apply(boradId, applyDecideReqDto.getUserId(), applyDecideReqDto.getState());
+        if (applyRepository.findByUserIdAndBoardId(apply) == null) {
+            throw new CustomApiException("존재하지 않는 지원입니다.");
+        }
+        applyRepository.updateById(apply);
     }
 
 }
