@@ -184,4 +184,10 @@ public class BoardService {
         boardTechRepository.insertSkill(boardInsertSkillReqDto);
     }
 
+    public ArrayList<Integer> getSkillForDetail(int boardId) {
+
+        ArrayList<Integer> checkLang = boardTechRepository.findByIdWithSkillForDetail(boardId);
+
+        return checkLang;
+    }
 }

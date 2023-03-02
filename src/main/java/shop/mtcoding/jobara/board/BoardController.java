@@ -88,8 +88,11 @@ public class BoardController {
             throw new CustomException("기업회원으로 로그인 해주세요.");
         }
 
+        List<Integer> boardSkill = boardService.getSkillForDetail(id);
+
         BoardUpdateRespDto boardDetailPS = boardService.getDetailForUpdate(id, principal.getId());
         model.addAttribute("boardDetail", boardDetailPS);
+        model.addAttribute("boardSkill", boardSkill);
 
         return "board/updateForm";
     }

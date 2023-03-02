@@ -88,7 +88,7 @@ public class BoardRepositoryTest {
         // when
         ArrayList<Integer> arrayList = boardTechRepository.findByIdWithSkillForDetail(boardId);
         String res = om.writeValueAsString(arrayList);
-        System.out.println("테스트 : " + res);
+        // System.out.println("테스트 : " + res);
 
         // then
 

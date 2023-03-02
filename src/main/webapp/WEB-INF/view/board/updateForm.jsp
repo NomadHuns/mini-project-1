@@ -178,46 +178,46 @@
 
                                     <div class="mb-2">
                                         <div class="form-check form-check-inline" style="width: 19%">
-                                            <input class="form-check-input" type="checkbox" id="java" value="on"
-                                                name="Java">
+                                            <input class="form-check-input" type="checkbox" id="lang1" value="1"
+                                                name="lang">
                                             <label class="form-check-label" for="inlineCheckbox1">Java</label>
                                         </div>
                                         <div class="form-check form-check-inline" style="width: 19%">
-                                            <input class="form-check-input" type="checkbox" id="cLang" value="on"
-                                                name="cLang">
+                                            <input class="form-check-input" type="checkbox" id="lang2" value="2"
+                                                name="lang">
                                             <label class="form-check-label" for="inlineCheckbox2">C#</label>
                                         </div>
                                         <div class="form-check form-check-inline" style="width: 19%">
-                                            <input class="form-check-input" type="checkbox" id="python" value="on"
-                                                name="python">
+                                            <input class="form-check-input" type="checkbox" id="lang3" value="3"
+                                                name="lang">
                                             <label class="form-check-label" for="inlineCheckbox1">Python</label>
                                         </div>
                                         <div class="form-check form-check-inline" style="width: 19%">
-                                            <input class="form-check-input" type="checkbox" id="php" value="on"
-                                                name="php">
+                                            <input class="form-check-input" type="checkbox" id="lang4" value="4"
+                                                name="lang">
                                             <label class="form-check-label" for="inlineCheckbox2">PHP</label>
                                         </div>
                                     </div>
 
                                     <div>
                                         <div class="form-check form-check-inline" style="width: 19%">
-                                            <input class="form-check-input" type="checkbox" id="jsc" value="on"
-                                                name="jsc">
+                                            <input class="form-check-input" type="checkbox" id="lang5" value="5"
+                                                name="lang">
                                             <label class="form-check-label" for="inlineCheckbox1">JS</label>
                                         </div>
                                         <div class="form-check form-check-inline" style="width: 19%">
-                                            <input class="form-check-input" type="checkbox" id="ruby" value="on"
-                                                name="ruby">
+                                            <input class="form-check-input" type="checkbox" id="lang6" value="6"
+                                                name="lang">
                                             <label class="form-check-label" for="inlineCheckbox2">Ruby</label>
                                         </div>
                                         <div class="form-check form-check-inline" style="width: 19%">
-                                            <input class="form-check-input" type="checkbox" id="assemblyLang" value="on"
-                                                name="assemblyLang">
+                                            <input class="form-check-input" type="checkbox" id="lang7" value="7"
+                                                name="lang">
                                             <label class="form-check-label" for="inlineCheckbox1">Assembly</label>
                                         </div>
                                         <div class="form-check form-check-inline" style="width: 19%">
-                                            <input class="form-check-input" type="checkbox" id="sqlLang" value="on"
-                                                name="sqlLang">
+                                            <input class="form-check-input" type="checkbox" id="lang8" value="8"
+                                                name="lang">
                                             <label class="form-check-label" for="inlineCheckbox2">SQL</label>
                                         </div>
                                     </div>
@@ -263,6 +263,16 @@
             </div>
         </form>
         <script>
+            var boardSkillArr = ${ boardSkill };
+
+            console.log(boardSkillArr);
+            boardSkillArr.forEach(num => {
+                var lang = num
+                var id = "lang" + num
+                console.log(id);
+                $("#" + id).attr("checked", true);
+            });
+
             function updateBoard() {
                 let boardId = `${boardDetail.id}`
 
