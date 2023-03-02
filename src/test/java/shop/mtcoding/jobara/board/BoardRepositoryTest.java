@@ -14,6 +14,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import shop.mtcoding.jobara.board.dto.BoardReq.BoardInsertSkillReqDto;
 import shop.mtcoding.jobara.board.dto.BoardResp.BoardDetailRespDto;
+import shop.mtcoding.jobara.board.dto.BoardResp.BoardListRespDto;
 import shop.mtcoding.jobara.board.dto.BoardResp.MyBoardListRespDto;
 import shop.mtcoding.jobara.board.model.BoardRepository;
 import shop.mtcoding.jobara.board.model.BoardTech;
@@ -91,6 +92,19 @@ public class BoardRepositoryTest {
         // System.out.println("테스트 : " + res);
 
         // then
+    }
 
+    @Test
+    public void findAllByUserIdForLangMatching_test() throws Exception {
+        // given
+        ObjectMapper om = new ObjectMapper();
+        int userId = 2;
+
+        // when
+        List<BoardListRespDto> boardList = boardRepository.findAllByUserIdForLangMatching(userId);
+        String res = om.writeValueAsString(boardList);
+        // System.out.println("테스트 : " + res);
+
+        // then
     }
 }
