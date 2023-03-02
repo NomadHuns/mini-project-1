@@ -14,7 +14,7 @@
                   </select>
             </div>
             <c:choose>
-                  <c:when test="${principal.role eq 'company'}">
+                  <c:when test="${principal.role eq 'company' and recommendEmployeeList[0].id != null}">
                   <h2 style="text-align: center;">최근 공고에 대한 추천 유저입니다.</h2>
                   <div class="my-border-color-default p-3">
                         <!-- 카드 들어갈 곳 -->
