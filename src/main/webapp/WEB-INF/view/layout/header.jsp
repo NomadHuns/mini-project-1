@@ -35,7 +35,7 @@
                         <a class="nav-link" href="/board/list">채용정보</a>
                     </li>
                     <li class="nav-item fs-4 text-center">
-                        <a class="nav-link" href="/user/list">인재정보</a>
+                        <a class="nav-link" href="/employee/list">인재정보</a>
                     </li>
                     <form class="d-flex">
                         <button class="btn btn-primary my-button-no-round" type="button"

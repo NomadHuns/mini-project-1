@@ -11,17 +11,17 @@
                             <div class="row">
                                 <div class="col-sm-5 m-3">
                                     <h3><c:choose>
-                                            <c:when test="${user.realName == null}">
+                                            <c:when test="${employee.realName == null}">
                                                 비공개
                                             </c:when>
                                             <c:otherwise>
-                                                ${user.realName}
+                                                ${employee.realName}
                                             </c:otherwise>
                                         </c:choose></h3>
                                 </div>
                                 <div class="col-sm-5">
-                                    <img src="${user.profile == null ? " /images/newjeans.jpg" :
-                                            user.profile}" class="rounded-circle"
+                                    <img src="${employee.profile == null ? " /images/newjeans.jpg" :
+                                            employee.profile}" class="rounded-circle"
                                         style="max-width: 100%; height: auto;">
                                 </div>
                             </div>
@@ -43,19 +43,19 @@
                                         </div>
                                         <div class="col-9 ps-0">
                                             <c:choose>
-                                                <c:when test="${user.address == null}">
+                                                <c:when test="${employee.address == null}">
                                                     비공개
                                                 </c:when>
                                                 <c:otherwise>
-                                                    ${user.realName}
+                                                    ${employee.realName}
                                                 </c:otherwise>
                                             </c:choose><br>
                                             <c:choose>
-                                                <c:when test="${user.detailAddress == null}">
+                                                <c:when test="${employee.detailAddress == null}">
                                                     비공개
                                                 </c:when>
                                                 <c:otherwise>
-                                                    ${user.detailAddress}
+                                                    ${employee.detailAddress}
                                                 </c:otherwise>
                                             </c:choose>
                                         </div>
@@ -79,11 +79,11 @@
                                         </div>
                                         <div class="col-9 ps-0">
                                             <c:choose>
-                                                <c:when test="${user.career == 0}">
+                                                <c:when test="${employee.career == 0}">
                                                     신입
                                                 </c:when>
                                                 <c:otherwise>
-                                                    ${user.career} 년차
+                                                    ${employee.career} 년차
                                                 </c:otherwise>
                                             </c:choose>
                                         </div>
@@ -102,11 +102,11 @@
                                         </div>
                                         <div class="col-8">
                                             <c:choose>
-                                                <c:when test="${user.tel == null}">
+                                                <c:when test="${employee.tel == null}">
                                                     비공개
                                                 </c:when>
                                                 <c:otherwise>
-                                                    ${user.tel}
+                                                    ${employee.tel}
                                                 </c:otherwise>
                                             </c:choose> 
                                         </div>
@@ -119,11 +119,11 @@
                                         </div>
                                         <div class="col-8">
                                             <c:choose>
-                                                <c:when test="${user.email == null}">
+                                                <c:when test="${employee.email == null}">
                                                     비공개
                                                 </c:when>
                                                 <c:otherwise>
-                                                    ${user.email}
+                                                    ${employee.email}
                                                 </c:otherwise>
                                             </c:choose>
                                             <!-- 이메일이 길어질경우 후에 간격 수정가능 -->
@@ -142,20 +142,20 @@
                         <h2 class="p-3"><b>지원자 자기 소개</b></h2>
                         <hr>
                         <h5><c:choose>
-                                <c:when test="${user.resumeTitle == null}">
+                                <c:when test="${employee.title == null}">
                                     비공개
                                 </c:when>
                                 <c:otherwise>
-                                    ${user.resumeTitle}
+                                    ${employee.title}
                                 </c:otherwise>
                             </c:choose></h5>
 
                         <p><c:choose>
-                                <c:when test="${user.resumeContent == null}">
+                                <c:when test="${employee.content == null}">
                                     비공개
                                 </c:when>
                                 <c:otherwise>
-                                    ${user.resumeContent}
+                                    ${employee.content}
                                 </c:otherwise>
                             </c:choose></p>
                         

@@ -1,5 +1,7 @@
 package shop.mtcoding.jobara.employee;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,7 +11,9 @@ import lombok.RequiredArgsConstructor;
 import shop.mtcoding.jobara.common.ex.CustomException;
 import shop.mtcoding.jobara.common.util.PathUtil;
 import shop.mtcoding.jobara.employee.dto.EmployeeReq.EmployeeJoinReqDto;
+import shop.mtcoding.jobara.employee.dto.EmployeeReq.EmployeeLoginReqDto;
 import shop.mtcoding.jobara.employee.dto.EmployeeReq.EmployeeUpdateReqDto;
+import shop.mtcoding.jobara.employee.dto.EmployeeResp.EmployeeAndResumeRespDto;
 import shop.mtcoding.jobara.employee.dto.EmployeeResp.EmployeeUpdateRespDto;
 import shop.mtcoding.jobara.employee.model.Employee;
 import shop.mtcoding.jobara.employee.model.EmployeeRepository;
@@ -23,12 +27,31 @@ public class EmployeeService {
     private final EmployeeRepository employeeRepository;
     private final UserRepository userRepository;
 
+    public List<EmployeeAndResumeRespDto> getEmployee() {
+        List<EmployeeAndResumeRespDto> employeePS = employeeRepository.findAllWithResume();
+        return employeePS;
+    }
+
+    public EmployeeAndResumeRespDto getEmployee(int id) {
+        EmployeeAndResumeRespDto employeePS = employeeRepository.findEmployeeByIdWithResume(id);
+        return employeePS;
+    }
+
+    public UserVo getEmployee(EmployeeLoginReqDto employeeLoginReqDto) {
+        UserVo userVo = userRepository.findByUsernameAndPassword(
+                new User(employeeLoginReqDto.getUsername(), employeeLoginReqDto.getPassword()));
+        if (userVo == null) {
+            throw new CustomException("유저네임이나 비밀번호가 틀렸습니다.");
+        }
+        return userVo;
+    }
+
     @Transactional(readOnly = true)
     public EmployeeUpdateRespDto getEmployeeUpdateRespDto(Integer principalId) {
         User user = userRepository.findById(principalId);
         Employee employee = employeeRepository.findByUserId(principalId);
         EmployeeUpdateRespDto employeeUpdateRespDto = new EmployeeUpdateRespDto(user.getPassword(), user.getEmail(),
-                user.getAddress(), user.getDetailAddress(), user.getTel(),
+                user.getAddress(), user.getDetailAddress(), user.getTel(), employee.getRealName(),
                 employee.getCareer(), employee.getEducation());
         return employeeUpdateRespDto;
     }
@@ -51,13 +74,14 @@ public class EmployeeService {
     @Transactional
     public UserVo updateEmpolyee(EmployeeUpdateReqDto employeeUpdateReqDto, Integer principalId,
             MultipartFile profile) {
-        String uuidImageName = PathUtil.writeImageFile(profile);
+        // String uuidImageName = PathUtil.writeImageFile(profile);
 
         User user = new User(principalId, employeeUpdateReqDto.getPassword(), employeeUpdateReqDto.getEmail(),
                 employeeUpdateReqDto.getAddress(), employeeUpdateReqDto.getDetailAddress(),
                 employeeUpdateReqDto.getTel(),
-                uuidImageName);
-        Employee employee = new Employee(principalId, employeeUpdateReqDto.getCareer(),
+                null);
+        Employee employee = new Employee(principalId, employeeUpdateReqDto.getRealName(),
+                employeeUpdateReqDto.getCareer(),
                 employeeUpdateReqDto.getEducation());
         try {
             userRepository.updateById(user);

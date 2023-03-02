@@ -8,7 +8,7 @@
             </div>
             <div class="justify-content-center d-flex">
                 <div class="my-border-color-default px-3 py-3" style="width: 50%; ">
-                    <form action="/user/update" method="post" enctype="multipart/form-data" onsubmit="return valid()">
+                    <form action="/employee/update" method="post" enctype="multipart/form-data" onsubmit="return valid()">
                     <div class="row">
                         <div class="col-md-5">
                             <div class="mb-3">
@@ -50,11 +50,16 @@
                         <div class="mb-3">
                             <label class="form-label">학력</label>
                             <select name="education" type="text" class="form-select">
-                                <option>비공개</option>
-                                <option>고졸</option>
-                                <option>2~3년제 대졸</option>
-                                <option>4년제 대졸</option>
+                                <option value="비공개">비공개</option>
+                                <option value="고졸">고졸</option>
+                                <option value="2~3년제 대졸">2~3년제 대졸</option>
+                                <option value="4년제 대졸">4년제 대졸</option>
                             </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">실명</label>
+                            <input name="realName" type="text" class="form-control" placeholder="realName"
+                                value="${employeeDto.realName}">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">주소</label>
@@ -123,7 +128,7 @@
                         </div>
                         <div class="d-flex justify-content-center">
                             <button type="submit" class="btn btn-primary my-button-color-default">정보 수정</button>
-                        <a href="/user/${user.id}/resumeForm">
+                        <a href="/resume/${user.id}">
                             <div class="btn btn-secondary ms-3">이력서 수정</div>
                         </a>
                         </div>

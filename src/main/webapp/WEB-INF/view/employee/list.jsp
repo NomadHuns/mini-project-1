@@ -16,35 +16,35 @@
             <div class="my-border-color-default p-3">
                   <!-- 카드 들어갈 곳 -->
                   <div class="row gx-3">
-                        <c:forEach items="${userList}" var="user">
+                        <c:forEach items="${employeeList}" var="employee">
                         <div class="col-md-3 py-2">
-                              <div id="user${user.id}" onmouseenter="mouseEnterImages(this)"
+                              <div id="employee${employee.id}" onmouseenter="mouseEnterImages(this)"
                                     onmouseleave="mouseLeaveImages(this)" class="card col-lg-12">
-                                    <a href="/user/${user.id}" class="no_under_line_link">
+                                    <a href="/employee/${employee.id}" class="no_under_line_link">
                                           <img class="card-img-top" style="height: 100px;" src="${user.profile == null ? " /images/newjeans.jpg" :
-                                            user.profile}"
+                                            employee.profile}"
                                                 alt="Card image">
                                           <div class="card-body">
                                                 <div class="my-text-ellipsis">
-                                                      <h5>${user.realName}</h5>
+                                                      <h5>${employee.realName}</h5>
                                                 </div>
                                                 <div class="my-text-ellipsis">
                                                       <c:choose>
-                                                      <c:when test="${user.career == 0}">
+                                                      <c:when test="${employee.career == 0}">
                                                       신입
                                                       </c:when>
                                                       <c:otherwise>
-                                                      ${user.career} 년차
+                                                      ${employee.career} 년차
                                                       </c:otherwise>
                                                       </c:choose>
                                                 </div>
                                                 <div class="my-text-ellipsis">
-                                                      ${user.resumeTitle}
+                                                      ${employee.title}
                                                 </div>
                                           </div>
                                     </a>
                                     <div class="card-footer d-flex justify-content-between">
-                                          <div>${user.createdAtToString}</div>
+                                          <div>${employee.createdAt}</div>
                                           <div><i id="heart" class="fa-regular fa-heart my-xl my-cursor fa-lg"></i>
                                           </div>
                                     </div>
@@ -59,7 +59,7 @@
                         <div class="col-md-3 py-2">
                               <div id="userImage5" onmouseenter="mouseEnterImages(this)"
                                     onmouseleave="mouseLeaveImages(this)" class="card col-lg-12">
-                                    <a href="/user/1" class="no_under_line_link">
+                                    <a href="/employee/1" class="no_under_line_link">
                                           <img class="card-img-top" style="height: 100px;" src="/images/newjeans.jpg"
                                                 alt="Card image">
                                           <div class="card-body">
@@ -84,7 +84,7 @@
                         <div class="col-md-3 py-2">
                               <div id="userImage6" onmouseenter="mouseEnterImages(this)"
                                     onmouseleave="mouseLeaveImages(this)" class="card col-lg-12">
-                                    <a href="/user/1" class="no_under_line_link">
+                                    <a href="/employee/1" class="no_under_line_link">
                                           <img class="card-img-top" style="height: 100px;" src="/images/newjeans.jpg"
                                                 alt="Card image">
                                           <div class="card-body">
@@ -109,7 +109,7 @@
                         <div class="col-md-3 py-2">
                               <div id="userImage7" onmouseenter="mouseEnterImages(this)"
                                     onmouseleave="mouseLeaveImages(this)" class="card col-lg-12">
-                                    <a href="/user/1" class="no_under_line_link">
+                                    <a href="/employee/1" class="no_under_line_link">
                                           <img class="card-img-top" style="height: 100px;" src="/images/newjeans.jpg"
                                                 alt="Card image">
                                           <div class="card-body">
@@ -134,7 +134,7 @@
                         <div class="col-md-3 py-2">
                               <div id="userImage8" onmouseenter="mouseEnterImages(this)"
                                     onmouseleave="mouseLeaveImages(this)" class="card col-lg-12">
-                                    <a href="/user/1" class="no_under_line_link">
+                                    <a href="/employee/1" class="no_under_line_link">
                                           <img class="card-img-top" style="height: 100px;" src="/images/newjeans.jpg"
                                                 alt="Card image">
                                           <div class="card-body">

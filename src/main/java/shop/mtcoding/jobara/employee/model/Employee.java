@@ -13,8 +13,9 @@ public class Employee {
     private Integer career;
     private String education;
 
-    public Employee(Integer userId, Integer career, String education) {
+    public Employee(Integer userId, String realName, Integer career, String education) {
         this.userId = userId;
+        this.realName = realName;
         this.career = career;
         this.education = education;
     }

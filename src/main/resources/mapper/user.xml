@@ -28,8 +28,7 @@
                email = #{email}, 
                address = #{address},
                detail_address = #{detailAddress},
-               tel = #{tel},
-               career = #{career}
+               tel = #{tel}
         where id = #{id} 
     </update>
 

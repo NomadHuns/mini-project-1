@@ -9,6 +9,18 @@
         select * from employee_tb
     </select>
 
+    <select id="findAllWithResume" resultType="shop.mtcoding.jobara.employee.dto.EmployeeResp$EmployeeAndResumeRespDto">
+        select user_tb.*, real_name, education, career, title, content
+        from user_tb, employee_tb, resume_tb
+        where user_tb.id = employee_tb.user_id and employee_tb.user_id = resume_tb.user_id
+    </select>
+
+    <select id="findEmployeeByIdWithResume" resultType="shop.mtcoding.jobara.employee.dto.EmployeeResp$EmployeeAndResumeRespDto">
+        select user_tb.*, real_name, education, career, title, content
+        from user_tb, employee_tb, resume_tb
+        where user_tb.id = employee_tb.user_id and employee_tb.user_id = resume_tb.user_id and user_tb.id = #{id}
+    </select>
+
     <select id="findByUserId" resultType="shop.mtcoding.jobara.employee.model.Employee">
         select * from employee_tb where user_id = #{userId}
     </select>
@@ -23,7 +35,7 @@
 
     <update id="updateByUserId">
         update employee_tb 
-           set real_name = #{readName}, 
+           set real_name = #{realName}, 
                career = #{career},
                education = #{education}
         where user_id = #{userId} 
