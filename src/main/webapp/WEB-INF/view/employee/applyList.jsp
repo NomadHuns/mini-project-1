@@ -26,7 +26,7 @@
                                 <td class="my-text-ellipsis"><a href="/board/${apply.boardId}"
                                         class="no_under_line_link" style="width: 100%; display: block;">
                                         ${apply.boardTitle}</a></td>
-                                <td class="text-center"><a href="/user/${apply.userId}" class="no_under_line_link"
+                                <td class="text-center"><a href="/employee/${apply.userId}" class="no_under_line_link"
                                         style="width: 100%; display: block;">${apply.resumeTitle}</a></td>
                                 <td class="my-text-ellipsis text-center">${apply.stateToString}</td>
                                 <td class="text-center my-text-ellipsis">${apply.createdAtToString}</td>

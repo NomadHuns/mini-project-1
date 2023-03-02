@@ -2,6 +2,7 @@ package shop.mtcoding.jobara.apply;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
@@ -21,6 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import shop.mtcoding.jobara.apply.dto.ApplyReq.ApplyDecideReqDto;
 import shop.mtcoding.jobara.apply.dto.ApplyResp.CompanyApplyRespDto;
 import shop.mtcoding.jobara.apply.dto.ApplyResp.EmployeeApplyRespDto;
 import shop.mtcoding.jobara.user.vo.UserVo;
@@ -43,7 +46,7 @@ public class ApplyControllerTest {
         UserVo pricipal = new UserVo();
         pricipal.setId(1);
         pricipal.setUsername("ssar");
-        pricipal.setRole("employee");
+        pricipal.setRole("company");
         pricipal.setProfile(null);
         mockSession = new MockHttpSession();
         mockSession.setAttribute("principal", pricipal);
@@ -97,5 +100,25 @@ public class ApplyControllerTest {
         assertThat(applyListPS.get(0).getBoardTitle()).isEqualTo("공고제목1");
         assertThat(applyListPS.get(0).getResumeTitle()).isEqualTo("이력제 제목1");
         assertThat(applyListPS.get(0).getState()).isEqualTo(-1);
+    }
+
+    @Test
+    public void decideApplyment_test() throws Exception {
+        // given
+        ApplyDecideReqDto applyDecideReqDto = new ApplyDecideReqDto(2, 1);
+        String requestBody = om.writeValueAsString(applyDecideReqDto);
+        System.out.println("테스트 : " + requestBody);
+
+        // when
+        ResultActions resultActions = mvc.perform(
+                put("/apply/decide")
+                        .content(requestBody)
+                        .contentType(MediaType.APPLICATION_JSON_VALUE)
+                        .session(mockSession));
+        String responseBody = resultActions.andReturn().getResponse().getContentAsString();
+        System.out.println("테스트 : " + responseBody);
+
+        // verify
+        resultActions.andExpect(status().isOk());
     }
 }

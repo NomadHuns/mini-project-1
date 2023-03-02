@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import shop.mtcoding.jobara.apply.dto.ApplyReq.ApplyDecideReqDto;
 import shop.mtcoding.jobara.apply.dto.ApplyResp.CompanyApplyRespDto;
 import shop.mtcoding.jobara.apply.dto.ApplyResp.EmployeeApplyRespDto;
 import shop.mtcoding.jobara.apply.model.Apply;
@@ -47,6 +48,10 @@ public class ApplyService {
     @Transactional(readOnly = true)
     public List<EmployeeApplyRespDto> getApplyForEmployee(Integer principalId) {
         return applyRepository.findByUserIdWithBoardAndResume(principalId);
+    }
+
+    @Transactional
+    public void approveApply(ApplyDecideReqDto applyDecideReqDto) {
     }
 
 }
