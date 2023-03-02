@@ -16,12 +16,16 @@ import shop.mtcoding.jobara.board.dto.BoardReq.BoardInsertSkillReqDto;
 import shop.mtcoding.jobara.board.dto.BoardResp.BoardDetailRespDto;
 import shop.mtcoding.jobara.board.dto.BoardResp.MyBoardListRespDto;
 import shop.mtcoding.jobara.board.model.BoardRepository;
+import shop.mtcoding.jobara.board.model.BoardTech;
+import shop.mtcoding.jobara.board.model.BoardTechRepository;
 
 @MybatisTest
 public class BoardRepositoryTest {
 
     @Autowired
     private BoardRepository boardRepository;
+    @Autowired
+    private BoardTechRepository boardTechRepository;
 
     @Test
     public void findByIdWithCompany_test() throws Exception {
@@ -53,4 +57,25 @@ public class BoardRepositoryTest {
         assertThat(myBoardListRespDto.get(1).getTitle()).isEqualTo("공고제목2");
     }
 
+    @Test
+    public void insertSkill_test() throws Exception {
+        // given
+        ObjectMapper om = new ObjectMapper();
+        List<BoardTech> boardTechList1 = boardTechRepository.findAll();
+        String res1 = om.writeValueAsString(boardTechList1);
+        // System.out.println("디버깅1 : " + res1);
+
+        int boardId = 5;
+        ArrayList<Integer> arrayList = new ArrayList<>(Arrays.asList(1, 3, 5, 7));
+        BoardInsertSkillReqDto boardInsertSkillReqDto = new BoardInsertSkillReqDto(5, arrayList);
+
+        // when
+        boardTechRepository.insertSkill(boardInsertSkillReqDto);
+        List<BoardTech> boardTechList2 = boardTechRepository.findAll();
+        String res2 = om.writeValueAsString(boardTechList2);
+        // System.out.println("디버깅2 : " + res2);
+
+        // then
+
+    }
 }

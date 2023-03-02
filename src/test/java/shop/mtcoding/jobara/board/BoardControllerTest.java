@@ -6,8 +6,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
@@ -33,7 +31,6 @@ import shop.mtcoding.jobara.board.dto.BoardResp.BoardListRespDto;
 import shop.mtcoding.jobara.board.dto.BoardResp.BoardMainRespDto;
 import shop.mtcoding.jobara.board.dto.BoardResp.BoardUpdateRespDto;
 import shop.mtcoding.jobara.board.dto.BoardResp.MyBoardListRespDto;
-import shop.mtcoding.jobara.user.model.User;
 import shop.mtcoding.jobara.user.vo.UserVo;
 
 @Transactional
@@ -139,7 +136,7 @@ public class BoardControllerTest {
     @Test
     public void save_test() throws Exception {
         // given
-        String requestBody = "title=테스트제목&content=테스트내용&careerString=1년이상 ~ 3년미만&educationString=4년 대졸이상&jobTypeString=정규직&favor=관련프로젝트 경험&userId=6";
+        String requestBody = "title=테스트제목&content=테스트내용&careerString=1년이상 ~ 3년미만&educationString=4년 대졸이상&jobTypeString=정규직&favor=관련프로젝트 경험&userId=6&checkLang=2&checkLang=4&checkLang=6";
 
         // when
         ResultActions resultActions = mvc.perform(
