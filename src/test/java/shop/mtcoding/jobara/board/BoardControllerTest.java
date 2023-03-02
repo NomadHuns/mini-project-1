@@ -6,6 +6,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -95,6 +97,8 @@ public class BoardControllerTest {
         boardUpdateReqDto.setEducationString("4년 대졸이상");
         boardUpdateReqDto.setJobTypeString("정규직");
         boardUpdateReqDto.setFavor("관련 프로젝트 경험");
+        ArrayList<Integer> arrayList = new ArrayList<>(Arrays.asList(1, 3, 5, 7));
+        boardUpdateReqDto.setCheckedValues(arrayList);
 
         String requestBody = om.writeValueAsString(boardUpdateReqDto);
 
