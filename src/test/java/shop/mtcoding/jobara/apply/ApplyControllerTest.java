@@ -112,11 +112,11 @@ public class ApplyControllerTest {
 
         // when
         ResultActions resultActions = mvc.perform(
-                put("board/"+boardId+"/apply")
+                put("/board/" + boardId + "/apply")
                         .content(requestBody)
                         .contentType(MediaType.APPLICATION_JSON_VALUE)
                         .session(mockSession));
-        String responseBody = resultActions.andReturn().getResponse().getContentAsString();
+        // String responseBody = resultActions.andReturn().getResponse().getContentAsString();
         // System.out.println("테스트 : " + responseBody);
 
         // verify

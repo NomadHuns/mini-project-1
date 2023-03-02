@@ -59,11 +59,13 @@ public class ApplyService {
     public void approveApply(ApplyDecideReqDto applyDecideReqDto, int boradId) {
         User user = userRepository.findById(applyDecideReqDto.getUserId());
         Verify.validateApiObject(user, "존재하지 않는 유저입니다.");
-        Apply apply = new Apply(boradId, applyDecideReqDto.getUserId(), applyDecideReqDto.getState());
-        if (applyRepository.findByUserIdAndBoardId(apply) == null) {
+        Apply apply = new Apply(boradId, applyDecideReqDto.getUserId());
+        Apply applyPS = applyRepository.findByUserIdAndBoardId(apply);
+        if (applyPS == null) {
             throw new CustomApiException("존재하지 않는 지원입니다.");
         }
-        applyRepository.updateById(apply);
+        applyPS.setState(applyDecideReqDto.getState());
+        applyRepository.updateById(applyPS);
     }
 
 }
