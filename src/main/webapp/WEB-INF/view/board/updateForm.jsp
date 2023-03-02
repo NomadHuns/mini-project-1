@@ -269,13 +269,11 @@
             boardSkillArr.forEach(num => {
                 var lang = num
                 var id = "lang" + num
-                console.log(id);
                 $("#" + id).attr("checked", true);
             });
 
             function updateBoard() {
                 let boardId = `${boardDetail.id}`
-
                 let title = $("#title").val();
                 let content = $("#content").val();
                 let careerString = $("#careerString").val();
@@ -283,6 +281,11 @@
                 let jobTypeString = $("#jobTypeString").val();
                 let favor = $("#favor").val();
                 let userId = $("#userId").val();
+                
+                let checkedValues = [];
+                $('input[name="lang"]:checked').each(function () {
+                    checkedValues.push($(this).val());
+                });
 
                 let board = {
                     id: boardId,
@@ -292,7 +295,8 @@
                     educationString: educationString,
                     jobTypeString: jobTypeString,
                     favor: favor,
-                    userId: userId
+                    userId: userId,
+                    checkedValues: checkedValues
                 };
 
 

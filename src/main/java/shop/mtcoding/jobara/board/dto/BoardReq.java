@@ -24,6 +24,8 @@ public class BoardReq {
 
         private String favor;
         private Integer userId;
+
+        private ArrayList<Integer> checkedValues;
     }
 
     @Getter
