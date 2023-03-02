@@ -47,7 +47,7 @@
                                                 </div>
                                           </a>
                                           <div class="card-footer d-flex justify-content-between">
-                                                <div>${recommendEmployee.createdAt}</div>
+                                                <div>${recommendEmployee.createdAtToString}</div>
                                                 <div><i id="heart" class="fa-regular fa-heart my-xl my-cursor fa-lg"></i>
                                                 </div>
                                           </div>
@@ -87,7 +87,7 @@
                                           </div>
                                     </a>
                                     <div class="card-footer d-flex justify-content-between">
-                                          <div>${employee.createdAt}</div>
+                                          <div>${employee.createdAtToString}</div>
                                           <div><i id="heart" class="fa-regular fa-heart my-xl my-cursor fa-lg"></i>
                                           </div>
                                     </div>
@@ -128,7 +128,7 @@
                                                 </div>
                                           </a>
                                           <div class="card-footer d-flex justify-content-between">
-                                                <div>${employee.createdAt}</div>
+                                                <div>${employee.createdAtToString}</div>
                                                 <div><i id="heart" class="fa-regular fa-heart my-xl my-cursor fa-lg"></i>
                                                 </div>
                                           </div>

@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import shop.mtcoding.jobara.common.util.DateParse;
 
 public class EmployeeResp {
 
@@ -44,5 +45,9 @@ public class EmployeeResp {
         private Integer career;
         private String title;
         private String content;
+
+        public String getCreatedAtToString() {
+            return DateParse.format(createdAt);
+        }
     }
 }
