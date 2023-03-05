@@ -34,8 +34,8 @@ public class ResumeController {
     @PostMapping("/resume/update/{id}")
     public ResponseEntity<?> updateResume(@PathVariable Integer id, @RequestBody ResumeUpdateReq resumeUpdateReq) {
         UserVo principal = (UserVo) session.getAttribute("principal");
-        Verify.validateObject(principal, "로그인이 필요합니다.");
-        Verify.checkRole(principal, "employee");
+        Verify.validateApiObject(principal, "로그인이 필요합니다.");
+        Verify.checkRoleApi(principal, "employee");
         if (resumeUpdateReq.getTitle() == null) {
             resumeUpdateReq.setTitle("무제");
         }
@@ -74,8 +74,8 @@ public class ResumeController {
     @PostMapping("/resume/save")
     public ResponseEntity<?> saveResume(@RequestBody ResumeSaveReq resumeSaveReq) {
         UserVo principal = (UserVo) session.getAttribute("principal");
-        Verify.validateObject(principal, "로그인이 필요합니다.");
-        Verify.checkRole(principal, "employee");
+        Verify.validateApiObject(principal, "로그인이 필요합니다.");
+        Verify.checkRoleApi(principal, "employee");
         if (resumeSaveReq.getTitle() == null) {
             resumeSaveReq.setTitle("무제");
         }
@@ -86,8 +86,8 @@ public class ResumeController {
     @DeleteMapping("/resume/{id}/delete")
     public ResponseEntity<?> deleteResume(@PathVariable int id) {
         UserVo principal = (UserVo) session.getAttribute("principal");
-        Verify.validateObject(principal, "로그인이 필요합니다.");
-        Verify.checkRole(principal, "employee");
+        Verify.validateApiObject(principal, "로그인이 필요합니다.");
+        Verify.checkRoleApi(principal, "employee");
         resumeService.deleteResume(id, principal.getId());
         return new ResponseEntity<>(new ResponseDto<>(1, "삭제 완료", null), HttpStatus.OK);
     }
