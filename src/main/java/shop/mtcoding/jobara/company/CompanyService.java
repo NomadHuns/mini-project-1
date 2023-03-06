@@ -49,9 +49,7 @@ public class CompanyService {
         // }
         String salt = Hash.makeSalt();
         String hashPassword = Hash.encode(companyJoinReqDto.getPassword() + salt);
-        User user = new User(companyJoinReqDto.getUsername(), hashPassword,
-                companyJoinReqDto.getEmail(), companyJoinReqDto.getAddress(), companyJoinReqDto.getDetailAddress());
-        user.setSalt(salt);
+        User user = new User(companyJoinReqDto, hashPassword, salt);
         try {
             userRepository.insertForCompany(user);
             Company company = new Company(user.getId(), companyJoinReqDto.getCompanyName(),
@@ -66,12 +64,8 @@ public class CompanyService {
     public UserVo updateCompany(CompanyUpdateReqDto companyUpdateReqDto, Integer principalId, MultipartFile profile) {
         String uuidImageName = PathUtil.writeImageFile(profile);
 
-        User user = new User(principalId, companyUpdateReqDto.getPassword(), companyUpdateReqDto.getEmail(),
-                companyUpdateReqDto.getAddress(), companyUpdateReqDto.getDetailAddress(), companyUpdateReqDto.getTel(),
-                uuidImageName);
-        Company company = new Company(principalId, companyUpdateReqDto.getCompanyName(),
-                companyUpdateReqDto.getCompanyScale(),
-                companyUpdateReqDto.getCompanyField());
+        User user = new User(companyUpdateReqDto, principalId, uuidImageName);
+        Company company = new Company(companyUpdateReqDto, principalId);
 
         try {
             userRepository.updateById(user);
