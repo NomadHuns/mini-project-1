@@ -5,11 +5,31 @@ server:
       charset: UTF-8
       force: true
 spring:
+  redis:
+    host: localhost
+    port: 6379
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: kimalss22@gmail.com
+    password: mwtjqsmcfcgufchd
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
   datasource:
     url: jdbc:h2:mem:test;MODE=MySQL
     driver-class-name: org.h2.Driver
     username: sa
     password: 
+  sql:
+    init:
+      schema-locations:
+      - classpath:db/table.sql
+      data-locations:
+      - classpath:db/data.sql
   h2:
     console:
       enabled: true
