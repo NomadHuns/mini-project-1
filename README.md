@@ -35,6 +35,9 @@
 - 보유 기술을 등록하여 기업 추천받기 기능
 - 관심 있는 기업 북마크 
 
+## 시연 영상
+[![1차_미니프로젝트_시연영상](http://img.youtube.com/vi/2Fzb6Xi9rJQ/0.jpg)](https://youtu.be/2Fzb6Xi9rJQ?t=0s)
+
 ## 주요 기능 시연
 |||
 |:--:|:--:|
