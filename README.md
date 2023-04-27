@@ -1,126 +1,87 @@
 # 구인구직 사이트 프로젝트
 
+## 시연 영상
+[![1차_미니프로젝트_시연영상](http://img.youtube.com/vi/2Fzb6Xi9rJQ/0.jpg)](https://youtu.be/2Fzb6Xi9rJQ?t=0s)
+
+## 발표 자료
+[미니프로젝트_2조.pdf](https://github.com/NomadHuns/mini-project-1/files/11340888/_2.pdf)
+
+## 팀 소개
+- 김태훈(팀장)
+- 이상현
+- 강민호
+- 김지윤
+
 ## 기술스택
-- JDK 11
-- Springboot 2.7.8
-- MyBatis
-- 테스트 h2 디비
-- JSP
-- Tomcat Jasper
-- JSTL
-- Redis
+![기술스택](https://user-images.githubusercontent.com/118786401/233411539-b1f8fc3a-9f97-427a-b30c-fc685018eed4.png)
 
-## 모델링
-### 1단계 (완료)
-- User
-- Company
-- Employee
-- Board
-### 2단계 (완료)
-- Apply
-- Tech
-- Resume
-### 3단계 (완료)
-- Love
+## 기능
+**자바라**는 구인하는 기업과 구직하는 구직자의 매칭 기능 제공하는 사이트입니다.
 
-## 기능정리
-### 1단계 (완료)
-- [x]  1단계 테이블 기본적인 CRUD 쿼리 생성
-- [x]  기업로그인
-- [x]  기업회원가입
-- [x]  기업회원정보수정
-- [x]  일반회원로그인
-- [x]  일반회원가입
-- [x]  일반회원정보수정
-- [x]  로그아웃
-- [x]  채용공고 목록보기
-- [x]  채용공고 상세보기
-- [x]  구직자 목록 페이지
-- [x]  구직자 상세 페이지
-- [x]  자소서 쓰기
-- [x]  채용공고 쓰기
-- [x]  채용공고 수정
-### 2단계 (완료)
-- [x]  내가 작성한채용 공고 목록 이동 board 3
-- [x]  지원자 테이블 생성 apply 1
-- [x]  보유 기술 테이블 생성 tech 1
-- [x]  채용공고 지원하기 apply 1
-- [x]  채용공고 지원자 목록 apply 1
-- [x]  구직자 목록 정렬하기(보유 기술이 유사한 순으로 정렬 기능 추가) user 2
-- [x]  채용공고 목록 정렬하기(보유 기술이 유사한 순으로 정렬 기능 추가) board 3
-- [x]  지원하지 않은 구직자 추천 board 3
-- [x]  프로필 사진 변경 user, company 2 3
-- [x]  아이디 중복 체크(서버에서도 체크) user, company 2 3
-- [x]  비밀번호 확인 user, company 1
-- [x]  이력서 테이블 생성
-### 3단계 (완료)
-- [x]  이력서 목록 페이지
-- [x]  자신의 이력서 관리 기능
-- [x]  채용 공고 지원시 이력서 선택 제출
-- [x]  페이징 처리
-- [x]  구직자 구독 기능
-- [x]  공고 구독 기능
-- [x]  비밀번호 SHA-256을 사용하여 해시화
-### 4단계
-- [ ]  회사 별점
-- [x]  공고 지원 남은 날짜 표시
-- [x]  AOP 사용
-- [x]  Redis 사용
-- [ ]  지도 API
-- [ ]  주소입력 API
-- [ ]  이메일 유효성 검사
+### 공통 기능
+- 기업/일반 회원 로그인 시 하나의 메소드만 호출하는 방식으로 구현
+- 회원가입 시 유저네임 중복 체크 및 비밀번호 유효성(동일한 비밀번호를 입력했는지) 체크
+- 회원정보수정 시 버튼 한번 클릭으로 사진까지 수정
+- 사진 등록 전 미리 보기 기능
+- 레디스로 구현하여 브라우저가 닫혀도(JSessionID가 없어도) 로그인 유지
+- 구직자/공고 페이징 기능
 
-# 주요 시연
-## 회원가입
-![회원가입1](https://user-images.githubusercontent.com/118786401/232196774-ce324eb5-a4ad-4ccb-9625-7efee63358be.gif)
+### 기업 관련 기능
+- 이력서 등록한 원하는 기술을 보윻란 유저 추천 기능
+- 구직자 목록 정렬 조건 기능
+- 공고 등록 기능
+- 등록한 공고 목록 수정 및 삭제 기능
+- 지원한 구직자 합/불합격 선택 기능
 
-## 로그인
-![로그인_AdobeExpress](https://user-images.githubusercontent.com/118786401/232196800-63bdc0d9-8105-4d73-bdfb-415671233e58.gif)
+### 구직자 관련 기능
 
-## 정보 수정
-![정보_수정_AdobeExpress](https://user-images.githubusercontent.com/118786401/232197009-9506d2dd-76a3-4fb9-a79a-9628d0bb4915.gif)
+- 채용 합/불합격시 등록된 이메일로 메일링 기능
+- 여러개의 자소서 쓰기 및 수정 기능
+- 공고 지원 기능
+- 보유 기술을 등록하여 기업 추천받기 기능
+- 관심 있는 기업 북마크 
 
-## 공고 등록
-![공고등록_AdobeExpress](https://user-images.githubusercontent.com/118786401/232197289-130ae8d7-6e8f-4c44-9630-da7e25ce3a2c.gif)
+## 주요 기능 시연
+|||
+|:--:|:--:|
+|회원가입|로그인|
+|![회원가입1](https://user-images.githubusercontent.com/118786401/232196774-ce324eb5-a4ad-4ccb-9625-7efee63358be.gif)|![로그인](https://user-images.githubusercontent.com/118786401/232635843-3aa73e3d-7f1d-496e-bf1a-eaa79a8b8829.gif)|
+|정보 수정|공고 등록|
+|![정보-수정](https://user-images.githubusercontent.com/118786401/232636464-ffc9660d-5867-4878-b1bb-5f19956329ef.gif)|![공고등록](https://user-images.githubusercontent.com/118786401/232636481-0759ccc8-5389-406d-a1ca-c0452307b979.gif)|
+|합/불합 처리|이력서 수정|
+|![합불합처리](https://user-images.githubusercontent.com/118786401/232636507-b8b4366b-04b3-4b1d-89f3-3d352f271c16.gif)|![이력서수정](https://user-images.githubusercontent.com/118786401/232636544-794341f5-ec36-44f5-9945-2702d10704db.gif)|
+|북마크 기능|지원 신청|
+|![북마크기능](https://user-images.githubusercontent.com/118786401/232636566-eba7e6a0-8d4b-47bd-b8c9-041fe1bee583.gif)|![지원신청](https://user-images.githubusercontent.com/118786401/233406164-9168732d-8ead-4d2d-bcb7-83ad7f8bc974.gif)|
 
-## 공고 수정
-![공고수정_AdobeExpress](https://user-images.githubusercontent.com/118786401/232196858-0efeff8d-e712-4da9-ba04-49928368c337.gif)
+## 테이블 설계
+![테이블](https://user-images.githubusercontent.com/118786401/233412160-0d63fe4b-acb1-4d0e-b077-1d38cb985bfe.png)
 
-## 합/불합 처리
-![합불합처리_AdobeExpress](https://user-images.githubusercontent.com/118786401/232196960-48e85d02-6823-4b2e-846e-4f1dbc1eef4b.gif)
+## 블로깅
+https://spark-mailbox-fe3.notion.site/K-Digital-1-5690c9f9f2db4c17ba8ede0b97ccc4e7
+https://blog.naver.com/aozp73/223016815011
 
-## 이력서 수정
-![이력서수정_AdobeExpress](https://user-images.githubusercontent.com/118786401/232197020-1a5a3c0e-8450-47b8-8f1b-a9690686c125.gif)
+## 구현하지 못한 기능
+- 주소를 받을 때 주소 등록 API를 사용하여서 받기
+- 기업 회원이 구직자 북마크 기능
+- 공고 새창에 띄우기
+- 완성 후 테스트 DB -> MyBatis등 실제 배포 DB로 바꾸기
+- 배포해보기
+- 검색 기능
+- 다크 모드
 
-## 북마크 기능
-![북마크기능_AdobeExpress](https://user-images.githubusercontent.com/118786401/232197051-eff2c37a-1329-42a3-9770-018d12fcb8fa.gif)
+## 느낀점
+- GitHub 사용 시에 Complete 충돌상황이 잦게 발생했다. 중간에 도메인 별로 나누어 작업하여서 충돌을 최소화할 수 있었다.
+- 또한 Git을 사용할 때 커밋 메시지가 중구난방 형식이라 이전 코드를 찾을 필요가 있을 때 불편했다. 후에는 커밋 메시지 컨벤션이 필요할 것 같다.
+- 프로젝트를 진행하면서 블로깅의 중요성을 확연히 느꼈다. 진행할 때마다 블로깅을 해두면 팀원간에 정보 공유가 원활해지는 장점이 있었다. 또한 블로깅하면서 다시 코드를 보면서 보완하는 부분에서 좋았다.
+- 팀원간에 소통 부분에서 아쉬웠다. 해당 작업을 팀원에게 요청할 때 나 또한 완벽하게 이해해야 함을 깨달았다.
+- 테스트 코드를 작성하는 부분에서 막히는 부분이 많았다. 최대한 테스트 코드를 모두 다 작성하고 싶었지만, JUnit이 익숙지않아 부족했다. JUnit에 대한 공부가 필요할 것 같다.
+- 모든 테스트를 통합테스트로 진행하였기 때문에 제어하지 못한 예외가 발생시 어떤 레이어에서 문제가 생겼는지 파악하기가 어려웠다. 레이어 테스트에 대해서 공부를 해야겠다는 생각이 들었다.
+- AOP를 배우기 전이라 AOP의 필요성을 알지 못했는데, 프로젝트 마지막 부분에서 공부하여서 AOP를 구현하였다.(세션 확인 AOP) 사용 이후에 AOP 하나만으로 공통 처리가 가능하며, 비지니스 로직에 집중할 수 있다는 것을 느꼈다. 
 
-## 지원 신청
-![지원신청_AdobeExpress](https://user-images.githubusercontent.com/118786401/232197063-5dad2ed8-8a93-45b7-acb1-d12f96c3a983.gif)
-
-# 발표 자료
-
-![page1](https://user-images.githubusercontent.com/118786401/232197082-f4d0cd48-1ec2-4a8a-8b46-49896aaa70ef.png)
-![page2](https://user-images.githubusercontent.com/118786401/232197085-b923576e-0314-46b1-8615-1d8a3028deb9.png)
-![page3](https://user-images.githubusercontent.com/118786401/232197087-f68e0fcb-2422-4aab-8025-814fb88a42c0.png)
-![page4](https://user-images.githubusercontent.com/118786401/232197088-98bed8de-d63a-4f6f-a682-f1afe2e6d8f6.png)
-![page5](https://user-images.githubusercontent.com/118786401/232197089-170eb0cb-7c91-4e4d-8b38-3da644c60e5b.png)
-![page6](https://user-images.githubusercontent.com/118786401/232197094-91b5b530-a735-4300-953e-696a23a36348.png)
-![page7](https://user-images.githubusercontent.com/118786401/232197095-59ada3af-7181-4f0b-8850-09e572557325.png)
-![page88](https://user-images.githubusercontent.com/118786401/232197120-ebd87422-9e8a-47c7-8a2d-34b6e9fa319f.png)
-![page9](https://user-images.githubusercontent.com/118786401/232197096-efb445f3-3bb7-4b4e-b4eb-392babd35fa3.png)
-![page10](https://user-images.githubusercontent.com/118786401/232197097-2133f96c-bf06-4366-adb6-8432c3554505.png)
-![page11](https://user-images.githubusercontent.com/118786401/232197099-13e2ec3f-bd1e-4d3c-abab-27c0c9fda90f.png)
-![page12](https://user-images.githubusercontent.com/118786401/232197101-2f94e77e-8c92-4984-bcac-c7d39d62bdfc.png)
-![page13](https://user-images.githubusercontent.com/118786401/232197102-927a8e8f-a598-443b-8d74-3d1673c5eecb.png)
-![page14](https://user-images.githubusercontent.com/118786401/232197104-1b5ebe75-d83a-4786-9dfd-54a489f060b1.png)
-![page15](https://user-images.githubusercontent.com/118786401/232197105-2a6c32f6-2376-446c-9b52-061c7f23f1bc.png)
-![page16](https://user-images.githubusercontent.com/118786401/232197108-176be1d0-02d5-4912-a856-58c4dda34ee7.png)
-![page17](https://user-images.githubusercontent.com/118786401/232197110-2eb1d999-c191-418c-961d-dcc751e155e2.png)
-![page18](https://user-images.githubusercontent.com/118786401/232197136-ed6702e4-d4fa-4c09-b2b8-58d850e018f7.png)
-![page19](https://user-images.githubusercontent.com/118786401/232197142-10bbca8b-2fa0-4594-bf23-7da933fd6205.png)
-![page20](https://user-images.githubusercontent.com/118786401/232197143-dcb81dcc-0ebf-4a6f-9334-d97162693a38.png)
-![page21](https://user-images.githubusercontent.com/118786401/232197145-91f2962b-3ead-4135-8ab7-2a4aa5c9010a.png)
-![page22](https://user-images.githubusercontent.com/118786401/232197147-a7f34128-583d-4636-8c8a-e12f766fad1b.png)
-![page23](https://user-images.githubusercontent.com/118786401/232197148-0eb3d95b-1399-4ecd-928e-b7306ec2f259.png)
+- 공고 Board Topic을 구현하는 과정에서 join과 Query를 작성함에 있어 SQL 공부를 더 할 필요가 있다고 생각했다. 구체적으로 Front의 SeletBox선택에 따른 정렬을 진행하면서 해당 부분을 느꼈다. 
+ 간단한 동적 Query 및 join을 공부하면서 구현 자체는 되었지만, 해당 코드가 최적화 및 효율적인 코드인지에 대해 늦게 고민하게 되었고 Query 작성 관련 자격증을 따고 싶다는 생각을 하게 되었다.
+- 프로젝트를 하기전엔 테스트 코드를 작성하는 것에 있어 많은 경우의 수를 생각하며 테스트 코드 진행에 집중해보고 싶다는 막연한 생각을 가졌었다.
+ 실제 프로젝트를 해보니, 강의 시간에 배운 것을 Git 협업 환경에 적용하는 부분 등에서 적응시간이 필요했고 테스트코드 보다 본 코드가 주가 된 상황이 되었다. 어느정도 기본적인 틀을 다 잡은 이후엔 테스트 코드에 집중하여 개발을 하고 싶다는 생각이 들었다.
+- Mybatis를 사용함에 있어 페이지네이션 처리를 직접 구현하는 과정이 있었다. 진행하고 있는 개발환경에 맞는 참고자료를 찾기 어려워, 강사님의 이전 기수 github을 보면서 클린코딩을 처음 해봤다.
+ 지금까지 여러 블로그를 보면서 공부하였는데, 완성된 github을 보면서 로직을 공부하는 과정에서 여러 방향으로 공부할 수 있다는 것을 느꼈다.
 
