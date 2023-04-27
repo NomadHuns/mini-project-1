@@ -1,5 +1,11 @@
 # 구인구직 사이트 프로젝트
 
+## 시연 영상
+[![1차_미니프로젝트_시연영상](http://img.youtube.com/vi/2Fzb6Xi9rJQ/0.jpg)](https://youtu.be/2Fzb6Xi9rJQ?t=0s)
+
+## 발표 자료
+[미니프로젝트_2조.pdf](https://github.com/NomadHuns/mini-project-1/files/11340888/_2.pdf)
+
 ## 팀 소개
 - 김태훈(팀장)
 - 이상현
@@ -34,9 +40,6 @@
 - 공고 지원 기능
 - 보유 기술을 등록하여 기업 추천받기 기능
 - 관심 있는 기업 북마크 
-
-## 시연 영상
-[![1차_미니프로젝트_시연영상](http://img.youtube.com/vi/2Fzb6Xi9rJQ/0.jpg)](https://youtu.be/2Fzb6Xi9rJQ?t=0s)
 
 ## 주요 기능 시연
 |||
