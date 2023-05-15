@@ -54,7 +54,7 @@
 |![북마크기능](https://user-images.githubusercontent.com/118786401/232636566-eba7e6a0-8d4b-47bd-b8c9-041fe1bee583.gif)|![지원신청](https://user-images.githubusercontent.com/118786401/233406164-9168732d-8ead-4d2d-bcb7-83ad7f8bc974.gif)|
 
 ## 테이블 설계
-![테이블](https://user-images.githubusercontent.com/118786401/233412160-0d63fe4b-acb1-4d0e-b077-1d38cb985bfe.png)
+![테이블](https://user-images.githubusercontent.com/118786401/233412160-0d63fe4b-acb1-4d0e-b077-1d38cb985bfe.png)  
 
 ## 블로깅
 https://spark-mailbox-fe3.notion.site/K-Digital-1-5690c9f9f2db4c17ba8ede0b97ccc4e7
